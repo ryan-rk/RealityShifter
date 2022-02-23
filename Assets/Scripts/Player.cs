@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	[SerializeField] Vector2 spawnPoint;
+	[SerializeField] bool isDrawSpawnPoint;
 	[SerializeField] float moveSpeed = 8f;
 	[SerializeField] float jumpForce = 20f;
 
@@ -17,11 +19,19 @@ public class Player : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		groundCheck = GetComponent<GroundCheck>();
+
+		Spawn();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+	}
+
+	void Spawn()
+	{
+		rb.velocity = Vector2.zero;
+		transform.position = spawnPoint;
 	}
 
 	public void Jump()
@@ -35,5 +45,21 @@ public class Player : MonoBehaviour
 	private void FixedUpdate()
 	{
 		rb.velocity = new Vector2(moveSpeed * horizontalMovement, rb.velocity.y);
+	}
+
+	public void SetDeath()
+	{
+		Debug.Log("Player is dead, respawning...");
+		Spawn();
+	}
+
+	private void OnDrawGizmos()
+	{
+		if (isDrawSpawnPoint)
+		{
+			Gizmos.color = Color.cyan;
+			Gizmos.DrawIcon(spawnPoint, "Record Off", true);
+			UnityEditor.EditorGUIUtility.IconContent("Record Off");
+		}
 	}
 }

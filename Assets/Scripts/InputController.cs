@@ -14,5 +14,9 @@ public class InputController : MonoBehaviour
 		{
 			player.Jump();
 		}
+		if (Input.GetButtonDown("Fire1"))
+		{
+			RealityManager.Instance.ShiftRealityPlane();
+		}
 	}
 }

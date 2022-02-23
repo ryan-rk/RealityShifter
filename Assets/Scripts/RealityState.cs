@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class RealityState : MonoBehaviour
 {
+	[SerializeField] bool isInitialReal = true;
 	[SerializeField] float realAlpha = 1f;
 	[SerializeField] float notRealAlpha = 0.4f;
-	[SerializeField] ParticleSystem realityParticle;
+	[SerializeField] GameObject realityIndicatorPrefab;
 	[SerializeField] Color particleRealColor;
 	[SerializeField] Color particleNotRealColor;
 	public bool isReal { get; private set; } = true;
 	bool isManaged = false;
+	bool realityShiftable = true;
+
+	ParticleSystem realityParticle;
 	SpriteRenderer sr;
 	int realLayerIndex = 7;
 	int notRealLayerIndex = 8;
@@ -24,6 +28,9 @@ public class RealityState : MonoBehaviour
 			SetManagedState(true);
 		}
 		sr = GetComponent<SpriteRenderer>();
+		GameObject realityIndicator = Instantiate(realityIndicatorPrefab, transform.position, Quaternion.identity, transform);
+		realityParticle = realityIndicator.GetComponent<ParticleSystem>();
+		SetReality(isInitialReal);
 	}
 
 	private void OnEnable()
@@ -50,34 +57,34 @@ public class RealityState : MonoBehaviour
 		}
 	}
 
-	private void Update()
+	public void SetRealityShiftable(bool isShiftable)
 	{
-		if (Input.GetKeyDown(KeyCode.F))
-		{
-			SetReality(!isReal);
-		}
+		realityShiftable = isShiftable;
 	}
 
 	public void SetReality(bool isReal)
 	{
-		this.isReal = isReal;
-		Color spriteColor = sr.color;
-		spriteColor.a = isReal ? realAlpha : notRealAlpha;
-		sr.color = spriteColor;
-		gameObject.layer = isReal ? realLayerIndex : notRealLayerIndex;
-		SetParticleColor(isReal);
-		OnStateUpdated?.Invoke();
+		if (realityShiftable)
+		{
+			this.isReal = isReal;
+			Color spriteColor = sr.color;
+			spriteColor.a = isReal ? realAlpha : notRealAlpha;
+			sr.color = spriteColor;
+			gameObject.layer = isReal ? realLayerIndex : notRealLayerIndex;
+			SetParticleColor(isReal);
+			OnStateUpdated?.Invoke();
+		}
 	}
 
 	void SetParticleColor(bool isReal)
 	{
 		var particleMainModule = realityParticle.main;
 		particleMainModule.startColor = isReal ? particleRealColor : particleNotRealColor;
-		Debug.Log("particle color changed");
 	}
 
 	private void OnDisable()
 	{
 		SetManagedState(false);
 	}
+
 }

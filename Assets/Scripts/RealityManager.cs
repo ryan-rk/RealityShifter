@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class RealityManager : MonoBehaviour
 	public static RealityManager Instance;
 
 	public List<RealityState> managedRealityObjects { get; private set; } = new List<RealityState>();
+	public event Action OnRealityShifted;
+
 
 	private void Awake()
 	{
@@ -43,5 +46,14 @@ public class RealityManager : MonoBehaviour
 	public void RemoveFromManaged(RealityState realityObject)
 	{
 		managedRealityObjects.Remove(realityObject);
+	}
+
+	public void ShiftRealityPlane()
+	{
+		foreach (RealityState realityObject in managedRealityObjects)
+		{
+			realityObject.SetReality(!realityObject.isReal);
+		}
+		OnRealityShifted?.Invoke();
 	}
 }
