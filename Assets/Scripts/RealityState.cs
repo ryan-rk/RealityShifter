@@ -11,6 +11,8 @@ public class RealityState : MonoBehaviour
 	[SerializeField] GameObject realityIndicatorPrefab;
 	[SerializeField] Color particleRealColor;
 	[SerializeField] Color particleNotRealColor;
+	ContactHighlight contactHighlight;
+
 	public bool isReal { get; private set; } = true;
 	bool isManaged = false;
 	bool realityShiftable = true;
@@ -28,6 +30,7 @@ public class RealityState : MonoBehaviour
 			SetManagedState(true);
 		}
 		sr = GetComponent<SpriteRenderer>();
+		contactHighlight = GetComponentInChildren<ContactHighlight>();
 		GameObject realityIndicator = Instantiate(realityIndicatorPrefab, transform.position, Quaternion.identity, transform);
 		realityParticle = realityIndicator.GetComponent<ParticleSystem>();
 		SetReality(isInitialReal);
@@ -60,6 +63,7 @@ public class RealityState : MonoBehaviour
 	public void SetRealityShiftable(bool isShiftable)
 	{
 		realityShiftable = isShiftable;
+		contactHighlight?.gameObject.SetActive(!isShiftable);
 	}
 
 	public void SetReality(bool isReal)
