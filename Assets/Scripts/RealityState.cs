@@ -9,8 +9,8 @@ public class RealityState : MonoBehaviour
 	[SerializeField] float realAlpha = 1f;
 	[SerializeField] float notRealAlpha = 0.4f;
 	[SerializeField] GameObject realityIndicatorPrefab;
-	[SerializeField] Color particleRealColor;
-	[SerializeField] Color particleNotRealColor;
+	Color particleRealColor = new Color(0.7f, 0.8f, 1f, 0.7f);
+	Color particleNotRealColor = new Color(1f, 0.68f, 0.8f, 0.7f);
 	ContactHighlight contactHighlight;
 
 	public bool isReal { get; private set; } = true;
@@ -30,7 +30,11 @@ public class RealityState : MonoBehaviour
 			SetManagedState(true);
 		}
 		sr = GetComponent<SpriteRenderer>();
-		contactHighlight = GetComponentInChildren<ContactHighlight>();
+		var contactHighlights = GetComponentsInChildren<ContactHighlight>(true);
+		if (contactHighlights.GetLength(0) > 0)
+		{
+			contactHighlight = contactHighlights[0];
+		}
 		GameObject realityIndicator = Instantiate(realityIndicatorPrefab, transform.position, Quaternion.identity, transform);
 		realityParticle = realityIndicator.GetComponent<ParticleSystem>();
 		SetReality(isInitialReal);

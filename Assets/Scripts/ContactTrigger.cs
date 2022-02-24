@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ContactTrigger : MonoBehaviour
 {
+	[SerializeField] List<string> excludedContactTag;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-
 	}
 
 	// Update is called once per frame
@@ -20,7 +21,10 @@ public class ContactTrigger : MonoBehaviour
 	{
 		if (other.TryGetComponent<RealityState>(out RealityState realityObject))
 		{
-			realityObject.SetRealityShiftable(false);
+			if (!excludedContactTag.Contains(other.gameObject.tag))
+			{
+				realityObject.SetRealityShiftable(false);
+			}
 		}
 	}
 
@@ -28,7 +32,10 @@ public class ContactTrigger : MonoBehaviour
 	{
 		if (other.TryGetComponent<RealityState>(out RealityState realityObject))
 		{
-			realityObject.SetRealityShiftable(true);
+			if (!excludedContactTag.Contains(other.gameObject.tag))
+			{
+				realityObject.SetRealityShiftable(true);
+			}
 		}
 	}
 }

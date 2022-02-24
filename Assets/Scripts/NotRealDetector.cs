@@ -6,6 +6,7 @@ public class NotRealDetector : MonoBehaviour
 {
 	[SerializeField] Player player;
 	public bool isOnNotReal { get; private set; } = false;
+	[SerializeField] List<string> excludedTrappedTag;
 
 	// Start is called before the first frame update
 	void Start()
@@ -33,16 +34,25 @@ public class NotRealDetector : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		isOnNotReal = true;
+		if (!excludedTrappedTag.Contains(other.gameObject.tag))
+		{
+			isOnNotReal = true;
+		}
 	}
 
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		isOnNotReal = true;
+		if (!excludedTrappedTag.Contains(other.gameObject.tag))
+		{
+			isOnNotReal = true;
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		isOnNotReal = false;
+		if (!excludedTrappedTag.Contains(other.gameObject.tag))
+		{
+			isOnNotReal = false;
+		}
 	}
 }
