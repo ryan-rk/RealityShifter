@@ -9,13 +9,13 @@ public class RealityState : MonoBehaviour
 	[SerializeField] float realAlpha = 1f;
 	[SerializeField] float notRealAlpha = 0.4f;
 	[SerializeField] GameObject realityIndicatorPrefab;
-	Color particleRealColor = new Color(0.7f, 0.8f, 1f, 0.7f);
+	Color particleRealColor = new Color(0.7f, 1f, 0.6f, 0.7f);
 	Color particleNotRealColor = new Color(1f, 0.68f, 0.8f, 0.7f);
 	ContactHighlight contactHighlight;
 
 	public bool isReal { get; private set; } = true;
 	bool isManaged = false;
-	bool realityShiftable = true;
+	bool isContacted = false;
 
 	ParticleSystem realityParticle;
 	SpriteRenderer sr;
@@ -37,7 +37,8 @@ public class RealityState : MonoBehaviour
 		}
 		GameObject realityIndicator = Instantiate(realityIndicatorPrefab, transform.position, Quaternion.identity, transform);
 		realityParticle = realityIndicator.GetComponent<ParticleSystem>();
-		SetReality(isInitialReal);
+		InitializeReality();
+		// SetReality(isInitialReal);
 	}
 
 	private void OnEnable()
@@ -64,23 +65,40 @@ public class RealityState : MonoBehaviour
 		}
 	}
 
-	public void SetRealityShiftable(bool isShiftable)
+	void InitializeReality()
 	{
-		realityShiftable = isShiftable;
-		contactHighlight?.gameObject.SetActive(!isShiftable);
+		SetReality(isInitialReal);
+		SetParticleColor(isReal);
+	}
+
+	public void SetContacted(bool isContacted)
+	{
+		this.isContacted = isContacted;
+		contactHighlight?.gameObject.SetActive(isContacted);
 	}
 
 	public void SetReality(bool isReal)
 	{
-		if (realityShiftable)
+		if (!isContacted)
 		{
 			this.isReal = isReal;
 			Color spriteColor = sr.color;
 			spriteColor.a = isReal ? realAlpha : notRealAlpha;
 			sr.color = spriteColor;
 			gameObject.layer = isReal ? realLayerIndex : notRealLayerIndex;
-			SetParticleColor(isReal);
+			if (isReal)
+			{
+				realityParticle.Play();
+			}
+			else
+			{
+				realityParticle.Pause();
+			}
 			OnStateUpdated?.Invoke();
+		}
+		else
+		{
+			SetParticleColor(RealityManager.Instance.currentPlaneIsReal);
 		}
 	}
 

@@ -8,6 +8,7 @@ public class RealityManager : MonoBehaviour
 	public static RealityManager Instance;
 
 	public List<RealityState> managedRealityObjects { get; private set; } = new List<RealityState>();
+	public bool currentPlaneIsReal { get; private set; } = true;
 	public event Action OnRealityShifted;
 
 
@@ -50,6 +51,8 @@ public class RealityManager : MonoBehaviour
 
 	public void ShiftRealityPlane()
 	{
+		currentPlaneIsReal = !currentPlaneIsReal;
+		CameraManager.Instance.ZoomShake();
 		foreach (RealityState realityObject in managedRealityObjects)
 		{
 			realityObject.SetReality(!realityObject.isReal);

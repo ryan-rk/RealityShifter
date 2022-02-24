@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,9 @@ public class Player : MonoBehaviour
 	Rigidbody2D rb;
 	Collider2D col;
 	GroundCheck groundCheck;
+
+	public event Action OnPlayerDeath;
+	public event Action OnPlayerWin;
 
 	// Start is called before the first frame update
 	void Start()
@@ -74,6 +78,7 @@ public class Player : MonoBehaviour
 
 	public void SetDeath()
 	{
+		horizontalMovement = 0f;
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		col.enabled = false;
@@ -84,11 +89,12 @@ public class Player : MonoBehaviour
 			mainVcamScreenShaker.ScreenShake(deathShakeIntensity, deathShakeDuration);
 		}
 		StartCoroutine(EndDeathAnimation());
+		OnPlayerDeath?.Invoke();
 	}
 
 	IEnumerator EndDeathAnimation()
 	{
-		while (playerSprite.transform.localScale.x > 0)
+		while (Mathf.Abs(playerSprite.transform.localScale.x) > 0)
 		{
 			yield return null;
 			float shrinkedScale = Mathf.MoveTowards(playerSprite.transform.localScale.x, 0, deathShrinkSpeed * Time.deltaTime);
@@ -96,6 +102,14 @@ public class Player : MonoBehaviour
 		}
 		deathParticle.Play();
 		GameManager.Instance.ManagePlayerDeath();
+	}
+
+	public void SetWin()
+	{
+		horizontalMovement = 0f;
+		rb.velocity = Vector2.zero;
+		spriteAnimator.Play("Win");
+		OnPlayerWin?.Invoke();
 	}
 
 	private void OnDrawGizmos()

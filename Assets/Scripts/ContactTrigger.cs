@@ -23,7 +23,7 @@ public class ContactTrigger : MonoBehaviour
 		{
 			if (!excludedContactTag.Contains(other.gameObject.tag))
 			{
-				realityObject.SetRealityShiftable(false);
+				realityObject.SetContacted(true);
 			}
 		}
 	}
@@ -34,7 +34,7 @@ public class ContactTrigger : MonoBehaviour
 		{
 			if (!excludedContactTag.Contains(other.gameObject.tag))
 			{
-				realityObject.SetRealityShiftable(true);
+				realityObject.SetContacted(false);
 			}
 		}
 	}

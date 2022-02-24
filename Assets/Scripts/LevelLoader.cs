@@ -9,8 +9,6 @@ public class LevelLoader : MonoBehaviour
 
 	[SerializeField] float loadSceneDelay = 1f;
 
-	[SerializeField] GameObject playerPrefab;
-
 	private void Awake()
 	{
 		Instance = this;
@@ -24,7 +22,7 @@ public class LevelLoader : MonoBehaviour
 
 	void InitializeLevel()
 	{
-		Instantiate(playerPrefab);
+		GameManager.Instance.SpawnPlayer();
 		SceneTransition.Instance.TransitionIntoScene();
 	}
 
@@ -38,6 +36,19 @@ public class LevelLoader : MonoBehaviour
 	{
 		SceneTransition.Instance.TransitionOutOfScene();
 		StartCoroutine(DelayLoadingScene(SceneManager.GetActiveScene().buildIndex));
+	}
+
+	public void NextLevel()
+	{
+		SceneTransition.Instance.TransitionOutOfScene();
+		if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 1))
+		{
+			Debug.Log("Game Completed");
+		}
+		else
+		{
+			StartCoroutine(DelayLoadingScene(SceneManager.GetActiveScene().buildIndex + 1));
+		}
 	}
 
 	IEnumerator DelayLoadingScene(int sceneIndex)

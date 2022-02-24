@@ -6,6 +6,12 @@ public class InputController : MonoBehaviour
 {
 	[SerializeField] Player player;
 
+	private void OnEnable()
+	{
+		player.OnPlayerDeath += StopInputReceiver;
+		player.OnPlayerWin += StopInputReceiver;
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
@@ -18,5 +24,16 @@ public class InputController : MonoBehaviour
 		{
 			RealityManager.Instance.ShiftRealityPlane();
 		}
+	}
+
+	void StopInputReceiver()
+	{
+		this.enabled = false;
+	}
+
+	private void OnDisable()
+	{
+		player.OnPlayerDeath -= StopInputReceiver;
+		player.OnPlayerWin -= StopInputReceiver;
 	}
 }
