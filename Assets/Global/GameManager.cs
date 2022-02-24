@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] GameObject playerPrefab;
 	[SerializeField] float levelReloadDelay = 0.4f;
 
+	public static bool isLevelFirstEntered = true;
+
 	private void Awake()
 	{
 		if (Instance != null && Instance != this)

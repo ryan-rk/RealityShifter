@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe0279ce8f054de89b854afa3894c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasRectTransform: {fileID: 0}
   transitionOverlay: {fileID: 6488752501906684095}
   mask: {fileID: 6488752503643124141}
-  maskTarget: {fileID: 0}
   shrinkSpeedRelativeToWidth: 5
   expandSpeedRelativeToWidth: 5

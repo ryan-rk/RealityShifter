@@ -19,13 +19,22 @@ public class LevelLoader : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		InitializeLevel();
+		LevelStartScreen tutorialScreen = FindObjectOfType<LevelStartScreen>();
+		if (!GameManager.isLevelFirstEntered)
+		{
+			tutorialScreen?.StartPlaying();
+		}
+		if (tutorialScreen == null)
+		{
+			InitializeLevel();
+		}
 	}
 
-	void InitializeLevel()
+	public void InitializeLevel()
 	{
 		GameManager.Instance.SpawnPlayer();
 		SceneTransition.Instance.TransitionIntoScene(transitionInDelay, () => { });
+		GameManager.isLevelFirstEntered = false;
 	}
 
 	// Update is called once per frame
@@ -58,6 +67,7 @@ public class LevelLoader : MonoBehaviour
 		}
 		else
 		{
+			GameManager.isLevelFirstEntered = true;
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}
