@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 	[SerializeField] float deathShakeIntensity = 10f;
 	[SerializeField] float deathShakeDuration = 0.5f;
 
+	[SerializeField] ParticleSystem winParticle;
+
 	Rigidbody2D rb;
 	Collider2D col;
 	GroundCheck groundCheck;
@@ -78,7 +80,6 @@ public class Player : MonoBehaviour
 
 	public void SetDeath()
 	{
-		horizontalMovement = 0f;
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		col.enabled = false;
@@ -106,9 +107,9 @@ public class Player : MonoBehaviour
 
 	public void SetWin()
 	{
-		horizontalMovement = 0f;
 		rb.velocity = Vector2.zero;
 		spriteAnimator.Play("Win");
+		winParticle.Play();
 		OnPlayerWin?.Invoke();
 	}
 

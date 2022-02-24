@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class InputController : MonoBehaviour
 		{
 			player.Jump();
 		}
-		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
 		{
 			RealityManager.Instance.ShiftRealityPlane();
 		}
@@ -28,6 +29,7 @@ public class InputController : MonoBehaviour
 
 	void StopInputReceiver()
 	{
+		player.horizontalMovement = 0;
 		this.enabled = false;
 	}
 

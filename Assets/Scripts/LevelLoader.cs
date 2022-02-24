@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,8 @@ public class LevelLoader : MonoBehaviour
 {
 	public static LevelLoader Instance;
 
-	[SerializeField] float loadSceneDelay = 1f;
+	[SerializeField] float transitionInDelay = 0.4f;
+	[SerializeField] float transitionOutDelay = 0f;
 
 	private void Awake()
 	{
@@ -23,7 +25,7 @@ public class LevelLoader : MonoBehaviour
 	void InitializeLevel()
 	{
 		GameManager.Instance.SpawnPlayer();
-		SceneTransition.Instance.TransitionIntoScene();
+		SceneTransition.Instance.TransitionIntoScene(transitionInDelay, () => { });
 	}
 
 	// Update is called once per frame
@@ -34,26 +36,29 @@ public class LevelLoader : MonoBehaviour
 
 	public void RestartLevel()
 	{
-		SceneTransition.Instance.TransitionOutOfScene();
-		StartCoroutine(DelayLoadingScene(SceneManager.GetActiveScene().buildIndex));
+		Action reloadSceneAction = () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		SceneTransition.Instance.TransitionOutOfScene(transitionOutDelay, reloadSceneAction);
 	}
+
+	// void ReloadScene()
+	// {
+	// 	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	// }
 
 	public void NextLevel()
 	{
-		SceneTransition.Instance.TransitionOutOfScene();
+		SceneTransition.Instance.TransitionOutOfScene(transitionOutDelay, NextLevelChecker);
+	}
+
+	void NextLevelChecker()
+	{
 		if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 1))
 		{
 			Debug.Log("Game Completed");
 		}
 		else
 		{
-			StartCoroutine(DelayLoadingScene(SceneManager.GetActiveScene().buildIndex + 1));
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
-	}
-
-	IEnumerator DelayLoadingScene(int sceneIndex)
-	{
-		yield return new WaitForSeconds(loadSceneDelay);
-		SceneManager.LoadScene(sceneIndex);
 	}
 }

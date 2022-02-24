@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 
 	[SerializeField] GameObject playerPrefab;
+	[SerializeField] float levelReloadDelay = 0.4f;
 
 	private void Awake()
 	{
@@ -34,6 +36,13 @@ public class GameManager : MonoBehaviour
 
 	public void ManagePlayerDeath()
 	{
+		StartCoroutine(DelayLevelReload());
+	}
+
+	IEnumerator DelayLevelReload()
+	{
+		yield return new WaitForSeconds(levelReloadDelay);
 		LevelLoader.Instance.RestartLevel();
 	}
+
 }

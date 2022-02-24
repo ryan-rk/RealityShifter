@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,6 @@ public class SceneTransition : MonoBehaviour
 	public static SceneTransition Instance;
 
 	[SerializeField] CircularTransition cTransition;
-	[SerializeField] float transitionInDelay = 0.5f;
-	[SerializeField] float transitionOutDelay = 0.2f;
 
 	private void Awake()
 	{
@@ -24,33 +23,44 @@ public class SceneTransition : MonoBehaviour
 		}
 	}
 
-	public void TransitionIntoScene()
+	public void TransitionIntoScene(float delay, Action transitionEndCallback)
 	{
-		StartCoroutine(DelayTransitionIn());
-	}
-
-	IEnumerator DelayTransitionIn()
-	{
-		yield return new WaitForSeconds(transitionInDelay);
 		if (cTransition != null)
 		{
-			cTransition.ExpandOut();
+			cTransition.ExpandOut(delay, transitionEndCallback);
 		}
+		// StartCoroutine(DelayTransitionIn(delay, transitionEndCallback));
 	}
 
-	public void TransitionOutOfScene()
-	{
-		StartCoroutine(DelayTransitionOut());
-	}
+	// IEnumerator DelayTransitionIn(float delay, Action transitionEndCallback)
+	// {
+	// 	yield return new WaitForSeconds(delay);
+	// 	if (cTransition != null)
+	// 	{
+	// 		cTransition.ExpandOut();
+	// 	}
+	// 	transitionEndCallback();
+	// }
 
-	IEnumerator DelayTransitionOut()
+	public void TransitionOutOfScene(float delay, Action transitionEndCallback)
 	{
-		yield return new WaitForSeconds(transitionOutDelay);
 		if (cTransition != null)
 		{
 			cTransition.gameObject.SetActive(true);
-			cTransition.ShrinkIn();
+			cTransition.ShrinkIn(delay, transitionEndCallback);
 		}
+		// StartCoroutine(DelayTransitionOut(delay, transitionEndCallback));
 	}
+
+	// IEnumerator DelayTransitionOut(float delay, Action transitionEndCallback)
+	// {
+	// 	yield return new WaitForSeconds(delay);
+	// 	if (cTransition != null)
+	// 	{
+	// 		cTransition.gameObject.SetActive(true);
+	// 		cTransition.ShrinkIn();
+	// 	}
+	// 	transitionEndCallback();
+	// }
 
 }

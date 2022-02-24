@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine.UI;
 
 public class CircularTransition : MonoBehaviour
 {
+	[SerializeField] RectTransform canvasRectTransform;
 	[SerializeField] Image transitionOverlay;
 	[SerializeField] Image mask;
 	[SerializeField] float shrinkSpeedRelativeToWidth = 0.01f;
@@ -15,22 +17,22 @@ public class CircularTransition : MonoBehaviour
 	private void OnEnable()
 	{
 		// Make the transition overlay to be twice as large as the width and height to account for every extreme position of mask on screen
-		transitionOverlay.rectTransform.sizeDelta = new Vector2(2.1f * Screen.width, 2.1f * Screen.height);
+		transitionOverlay.rectTransform.sizeDelta = new Vector2(2.1f * Screen.width, 2.1f * Screen.height) / canvasRectTransform.localScale.x;
 		InstantExpand();
 	}
 
-	public void ShrinkIn()
+	public void ShrinkIn(float delay, Action transitionEndCallback)
 	{
 		Player player = FindObjectOfType<Player>();
 		if (player != null)
 		{
-			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(player.transform.position);
+			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(player.transform.position) / canvasRectTransform.localScale.x;
 		}
 		else
 		{
 			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(Vector3.zero);
 		}
-		StartCoroutine(SizeChangingProcess(0, shrinkSpeedRelativeToWidth * Screen.width, false));
+		StartCoroutine(SizeChangingProcess(delay, 0, shrinkSpeedRelativeToWidth * Screen.width, false, transitionEndCallback));
 	}
 
 	public void InstantShrink()
@@ -38,18 +40,18 @@ public class CircularTransition : MonoBehaviour
 		mask.rectTransform.sizeDelta = Vector2.zero;
 	}
 
-	public void ExpandOut()
+	public void ExpandOut(float delay, Action transitionEndCallback)
 	{
 		Player player = FindObjectOfType<Player>();
 		if (player != null)
 		{
-			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(player.transform.position);
+			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(player.transform.position) / canvasRectTransform.localScale.x;
 		}
 		else
 		{
 			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(Vector3.zero);
 		}
-		StartCoroutine(SizeChangingProcess(expandedRadius * Screen.width, expandSpeedRelativeToWidth * Screen.width, true));
+		StartCoroutine(SizeChangingProcess(delay, expandedRadius * Screen.width, expandSpeedRelativeToWidth * Screen.width, true, transitionEndCallback));
 	}
 
 	void InstantExpand()
@@ -57,8 +59,9 @@ public class CircularTransition : MonoBehaviour
 		mask.rectTransform.sizeDelta = new Vector2(expandedRadius * Screen.width, expandedRadius * Screen.width);
 	}
 
-	IEnumerator SizeChangingProcess(float targetRadius, float changeSpeed, bool disableOnFinish)
+	IEnumerator SizeChangingProcess(float delay, float targetRadius, float changeSpeed, bool disableOnFinish, Action transitionEndCallback)
 	{
+		yield return new WaitForSeconds(delay);
 		if (!isChangingSize)
 		{
 			isChangingSize = true;
@@ -74,6 +77,7 @@ public class CircularTransition : MonoBehaviour
 			{
 				gameObject.SetActive(false);
 			}
+			transitionEndCallback();
 		}
 	}
 }
