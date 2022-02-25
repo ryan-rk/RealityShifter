@@ -39,7 +39,10 @@ public class TipsTrigger : MonoBehaviour
 	{
 		if (other.GetComponent<Player>())
 		{
-			tipsWindowAnimator.Play("Shrink");
+			if (other.gameObject.activeSelf)
+			{
+				tipsWindowAnimator.Play("Shrink");
+			}
 		}
 	}
 }
