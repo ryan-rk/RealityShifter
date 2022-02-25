@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 1867505445
+    locked: 0
+  - name: Tips
+    uniqueID: 4140778769
     locked: 0

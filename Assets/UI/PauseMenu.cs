@@ -7,11 +7,13 @@ public class PauseMenu : MonoBehaviour
 	public static bool isPaused = false;
 
 	[SerializeField] GameObject pauseMenuUI;
+	Animator pauseMenuUIAnimator;
+	[SerializeField] float gameResumeDelay = 0.5f;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		pauseMenuUIAnimator = pauseMenuUI.GetComponent<Animator>();
 	}
 
 	// Update is called once per frame
@@ -22,6 +24,7 @@ public class PauseMenu : MonoBehaviour
 
 	public void PauseGame()
 	{
+		StopAllCoroutines();
 		isPaused = true;
 		pauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
@@ -29,6 +32,13 @@ public class PauseMenu : MonoBehaviour
 
 	public void ResumeGame()
 	{
+		pauseMenuUIAnimator.Play("Close");
+		StartCoroutine(DelayResumingGame());
+	}
+
+	IEnumerator DelayResumingGame()
+	{
+		yield return new WaitForSecondsRealtime(gameResumeDelay);
 		isPaused = false;
 		pauseMenuUI.SetActive(false);
 		Time.timeScale = 1f;

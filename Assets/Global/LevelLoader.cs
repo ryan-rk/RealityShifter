@@ -11,6 +11,9 @@ public class LevelLoader : MonoBehaviour
 	[SerializeField] float transitionInDelay = 0.4f;
 	[SerializeField] float transitionOutDelay = 0f;
 
+	public Vector2 playerSpawnPoint;
+	[SerializeField] bool isDrawSpawnPoint;
+
 	private void Awake()
 	{
 		Instance = this;
@@ -69,6 +72,16 @@ public class LevelLoader : MonoBehaviour
 		{
 			GameManager.isLevelFirstEntered = true;
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		if (isDrawSpawnPoint)
+		{
+			Gizmos.color = Color.cyan;
+			Gizmos.DrawIcon(playerSpawnPoint, "Record Off", true);
+			UnityEditor.EditorGUIUtility.IconContent("Record Off");
 		}
 	}
 }

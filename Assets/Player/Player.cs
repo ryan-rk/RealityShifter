@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	[SerializeField] Vector2 spawnPoint;
-	[SerializeField] bool isDrawSpawnPoint;
 	[SerializeField] float moveSpeed = 8f;
 	[SerializeField] float jumpForce = 20f;
 	public float horizontalMovement = 0f;
@@ -36,7 +34,6 @@ public class Player : MonoBehaviour
 
 		spriteAnimator = playerSprite.GetComponent<Animator>();
 
-		Spawn();
 	}
 
 	// Update is called once per frame
@@ -52,9 +49,8 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	void Spawn()
+	public void Spawn(Vector2 spawnPoint)
 	{
-		rb.velocity = Vector2.zero;
 		transform.position = spawnPoint;
 	}
 
@@ -113,13 +109,4 @@ public class Player : MonoBehaviour
 		OnPlayerWin?.Invoke();
 	}
 
-	private void OnDrawGizmos()
-	{
-		if (isDrawSpawnPoint)
-		{
-			Gizmos.color = Color.cyan;
-			Gizmos.DrawIcon(spawnPoint, "Record Off", true);
-			UnityEditor.EditorGUIUtility.IconContent("Record Off");
-		}
-	}
 }
