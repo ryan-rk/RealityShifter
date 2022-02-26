@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CircularTransition : MonoBehaviour
 {
+	public bool isFollowMouse = false;
 	[SerializeField] RectTransform canvasRectTransform;
 	[SerializeField] Image transitionOverlay;
 	[SerializeField] Image mask;
@@ -24,9 +25,13 @@ public class CircularTransition : MonoBehaviour
 	public void ShrinkIn(float delay, Action transitionEndCallback)
 	{
 		Player player = FindObjectOfType<Player>();
-		if (player != null)
+		if (player != null && !isFollowMouse)
 		{
 			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(player.transform.position) / canvasRectTransform.localScale.x;
+		}
+		else if (isFollowMouse)
+		{
+			mask.rectTransform.anchoredPosition = Input.mousePosition / canvasRectTransform.localScale.x;
 		}
 		else
 		{

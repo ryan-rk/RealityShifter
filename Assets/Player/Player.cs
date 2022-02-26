@@ -104,6 +104,7 @@ public class Player : MonoBehaviour
 	public void SetWin()
 	{
 		rb.velocity = Vector2.zero;
+		rb.bodyType = RigidbodyType2D.Kinematic;
 		spriteAnimator.Play("Win");
 		winParticle.Play();
 		OnPlayerWin?.Invoke();

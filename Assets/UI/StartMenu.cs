@@ -10,17 +10,18 @@ public class StartMenu : MonoBehaviour
 
 	private void Start()
 	{
+		SceneTransition.Instance.InitializeTransition();
 		SceneTransition.Instance.TransitionIntoScene(transitionInDelay, () => { });
 	}
 
 	public void QuitGame()
 	{
-		SceneTransition.Instance.TransitionOutOfScene(transitionOutDelay, () => Application.Quit());
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => Application.Quit());
 	}
 
 	public void StartGame()
 	{
-		SceneTransition.Instance.TransitionOutOfScene(transitionOutDelay, StartFirstLevel);
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, StartFirstLevel);
 	}
 
 	void StartFirstLevel()

@@ -56,6 +56,17 @@ public class SceneTransition : MonoBehaviour
 		// StartCoroutine(DelayTransitionOut(delay, transitionEndCallback));
 	}
 
+	public void TransitionOutOfSceneAtMouse(float delay, Action transitionEndCallback)
+	{
+		if (cTransition != null)
+		{
+			cTransition.isFollowMouse = true;
+			cTransition.gameObject.SetActive(true);
+			cTransition.ShrinkIn(delay, transitionEndCallback);
+		}
+		// StartCoroutine(DelayTransitionOut(delay, transitionEndCallback));
+	}
+
 	// IEnumerator DelayTransitionOut(float delay, Action transitionEndCallback)
 	// {
 	// 	yield return new WaitForSeconds(delay);

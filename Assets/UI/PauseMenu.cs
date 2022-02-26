@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 	[SerializeField] GameObject pauseMenuUI;
 	Animator pauseMenuUIAnimator;
 	[SerializeField] float gameResumeDelay = 0.5f;
+	[SerializeField] float returnToMainMenuDelay = 0f;
 
 	// Start is called before the first frame update
 	void Start()
@@ -47,6 +49,8 @@ public class PauseMenu : MonoBehaviour
 	public void ReturnToMainMenu()
 	{
 		Debug.Log("Returning to main menu");
+		Time.timeScale = 1f;
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(0));
 	}
 
 	public void ReturnToStageSelect()
