@@ -19,7 +19,6 @@ public class ContactTrigger : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		Debug.Log("trigger enter");
 		if (other.TryGetComponent<RealityState>(out RealityState realityObject))
 		{
 			if (!excludedContactTag.Contains(other.gameObject.tag))
@@ -31,7 +30,6 @@ public class ContactTrigger : MonoBehaviour
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		Debug.Log("trigger exit");
 		if (other.TryGetComponent<RealityState>(out RealityState realityObject))
 		{
 			if (!excludedContactTag.Contains(other.gameObject.tag))

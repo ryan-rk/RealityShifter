@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class RealityState : MonoBehaviour
 {
+	[SerializeField] SpriteRenderer sr;
+	[SerializeField] SpriteRenderer realSR;
+	[SerializeField] SpriteRenderer notRealSR;
 	[SerializeField] bool isInitialReal = true;
 	[SerializeField] float realAlpha = 1f;
 	[SerializeField] float notRealAlpha = 0.4f;
@@ -13,12 +16,13 @@ public class RealityState : MonoBehaviour
 	Color particleNotRealColor = new Color(1f, 0.68f, 0.8f, 0.7f);
 	ContactHighlight contactHighlight;
 
+	[SerializeField] GameObject groundBody;
+
 	public bool isReal { get; private set; } = true;
 	bool isManaged = false;
 	bool isContacted = false;
 
 	ParticleSystem realityParticle;
-	SpriteRenderer sr;
 	int realLayerIndex = 7;
 	int notRealLayerIndex = 8;
 	public event Action OnStateUpdated;
@@ -29,7 +33,6 @@ public class RealityState : MonoBehaviour
 		{
 			SetManagedState(true);
 		}
-		sr = GetComponent<SpriteRenderer>();
 		var contactHighlights = GetComponentsInChildren<ContactHighlight>(true);
 		if (contactHighlights.GetLength(0) > 0)
 		{
@@ -67,6 +70,7 @@ public class RealityState : MonoBehaviour
 
 	void InitializeReality()
 	{
+		SetSprite(isInitialReal);
 		SetReality(isInitialReal);
 		SetParticleColor(isReal);
 	}
@@ -94,11 +98,16 @@ public class RealityState : MonoBehaviour
 			{
 				realityParticle.Pause();
 			}
+			if (groundBody != null)
+			{
+				groundBody.SetActive(isReal);
+			}
 			OnStateUpdated?.Invoke();
 		}
 		else
 		{
 			SetParticleColor(RealityManager.Instance.currentPlaneIsReal);
+			SetSprite(RealityManager.Instance.currentPlaneIsReal);
 		}
 	}
 
@@ -106,6 +115,15 @@ public class RealityState : MonoBehaviour
 	{
 		var particleMainModule = realityParticle.main;
 		particleMainModule.startColor = isReal ? particleRealColor : particleNotRealColor;
+	}
+
+	void SetSprite(bool isReal)
+	{
+		if (realSR == null || notRealSR == null)
+		{
+			return;
+		}
+		sr.sprite = isReal ? realSR.sprite : notRealSR.sprite;
 	}
 
 	private void OnDisable()

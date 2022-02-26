@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3456040641013933457}
   - {fileID: 3456040639347282894}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1720426417223963414
 PrefabInstance:
@@ -98,6 +98,18 @@ PrefabInstance:
     - target: {fileID: 4041554126344995036, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
       propertyPath: m_Name
       value: BoundaryBottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -167,6 +179,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoundaryRight
       objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
@@ -234,6 +258,18 @@ PrefabInstance:
     - target: {fileID: 4041554126344995036, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
       propertyPath: m_Name
       value: BoundaryLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -306,6 +342,18 @@ PrefabInstance:
     - target: {fileID: 4041554126344995036, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
       propertyPath: m_Name
       value: BoundaryTop
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041554126344995039, guid: 263d5c76c761e4b4c844c25ff4376ac2, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

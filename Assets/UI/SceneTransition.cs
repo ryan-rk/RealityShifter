@@ -29,9 +29,13 @@ public class SceneTransition : MonoBehaviour
 
 	public void TransitionIntoScene(float delay, Action transitionEndCallback)
 	{
-		if (cTransition != null && cTransition.gameObject.activeInHierarchy)
+		if (cTransition != null && gameObject.activeInHierarchy)
 		{
 			cTransition.ExpandOut(delay, transitionEndCallback);
+		}
+		else
+		{
+			transitionEndCallback();
 		}
 		// StartCoroutine(DelayTransitionIn(delay, transitionEndCallback));
 	}
@@ -48,21 +52,29 @@ public class SceneTransition : MonoBehaviour
 
 	public void TransitionOutOfScene(float delay, Action transitionEndCallback)
 	{
-		if (cTransition != null)
+		if (cTransition != null && gameObject.activeInHierarchy)
 		{
 			cTransition.gameObject.SetActive(true);
 			cTransition.ShrinkIn(delay, transitionEndCallback);
+		}
+		else
+		{
+			transitionEndCallback();
 		}
 		// StartCoroutine(DelayTransitionOut(delay, transitionEndCallback));
 	}
 
 	public void TransitionOutOfSceneAtMouse(float delay, Action transitionEndCallback)
 	{
-		if (cTransition != null)
+		if (cTransition != null && gameObject.activeInHierarchy)
 		{
 			cTransition.isFollowMouse = true;
 			cTransition.gameObject.SetActive(true);
 			cTransition.ShrinkIn(delay, transitionEndCallback);
+		}
+		else
+		{
+			transitionEndCallback();
 		}
 		// StartCoroutine(DelayTransitionOut(delay, transitionEndCallback));
 	}
