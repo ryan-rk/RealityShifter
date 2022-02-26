@@ -7,6 +7,8 @@ public class RealityManager : MonoBehaviour
 {
 	public static RealityManager Instance;
 
+	public int maxNumberOfShift = 1;
+	public int remainingShift;
 	public List<RealityState> managedRealityObjects { get; private set; } = new List<RealityState>();
 	public bool currentPlaneIsReal { get; private set; } = true;
 	public event Action OnRealityShifted;
@@ -51,12 +53,21 @@ public class RealityManager : MonoBehaviour
 
 	public void ShiftRealityPlane()
 	{
-		currentPlaneIsReal = !currentPlaneIsReal;
-		CameraManager.Instance.ZoomShake();
-		foreach (RealityState realityObject in managedRealityObjects)
+		if (remainingShift > 0)
 		{
-			realityObject.SetReality(!realityObject.isReal);
+			remainingShift = Mathf.Max(remainingShift - 1, 0);
+			currentPlaneIsReal = !currentPlaneIsReal;
+			CameraManager.Instance.ZoomShake();
+			foreach (RealityState realityObject in managedRealityObjects)
+			{
+				realityObject.SetReality(!realityObject.isReal);
+			}
+			OnRealityShifted?.Invoke();
 		}
-		OnRealityShifted?.Invoke();
+	}
+
+	public void RecoverShift()
+	{
+		remainingShift = maxNumberOfShift;
 	}
 }

@@ -47,6 +47,10 @@ public class Player : MonoBehaviour
 		{
 			FlipSprite(false);
 		}
+		if (groundCheck.isGrounded)
+		{
+			RealityManager.Instance.RecoverShift();
+		}
 	}
 
 	public void Spawn(Vector2 spawnPoint)

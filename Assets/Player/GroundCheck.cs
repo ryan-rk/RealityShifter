@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
@@ -12,10 +11,18 @@ public class GroundCheck : MonoBehaviour
 
 	[SerializeField] bool isDrawLines = false;
 
+	bool prevFrameIsGrounded = false;
+	public event Action OnLandedGround;
+
 	// Update is called once per frame
 	void Update()
 	{
 		isGrounded = Physics2D.BoxCast(transform.position + boxCastOffset, boxCastSize, 0, Vector2.down, boxCastDistance, groundLayer);
+		if (prevFrameIsGrounded != isGrounded)
+		{
+			OnLandedGround?.Invoke();
+		}
+		prevFrameIsGrounded = isGrounded;
 	}
 
 	private void OnDrawGizmos()
