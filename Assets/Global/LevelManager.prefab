@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &59062165473985472
 MonoBehaviour:
@@ -46,3 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionInDelay: 0.4
   transitionOutDelay: 0
+  playerPrefab: {fileID: 7599565753546303315, guid: a5c81ec0511194009865174540c702e0, type: 3}
+  playerSpawnPoint: {x: 0, y: 0}
+  isDrawSpawnPoint: 0

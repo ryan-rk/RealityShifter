@@ -9,8 +9,11 @@ public class LevelLoader : MonoBehaviour
 	public static LevelLoader Instance;
 
 	[SerializeField] float transitionInDelay = 0.4f;
-	[SerializeField] float transitionOutDelay = 0f;
 
+	[SerializeField] float nextLevelDelay = 1f;
+	[SerializeField] float restartLevelDelay = 0f;
+
+	[SerializeField] Player playerPrefab;
 	public Vector2 playerSpawnPoint;
 	[SerializeField] bool isDrawSpawnPoint;
 
@@ -35,7 +38,9 @@ public class LevelLoader : MonoBehaviour
 
 	public void InitializeLevel()
 	{
-		GameManager.Instance.SpawnPlayer();
+		Player playerInstance = Instantiate(playerPrefab);
+		playerInstance.Spawn(LevelLoader.Instance.playerSpawnPoint);
+		SceneTransition.Instance.InitializeTransition();
 		SceneTransition.Instance.TransitionIntoScene(transitionInDelay, () => { });
 		GameManager.isLevelFirstEntered = false;
 	}
@@ -49,7 +54,7 @@ public class LevelLoader : MonoBehaviour
 	public void RestartLevel()
 	{
 		Action reloadSceneAction = () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		SceneTransition.Instance.TransitionOutOfScene(transitionOutDelay, reloadSceneAction);
+		SceneTransition.Instance.TransitionOutOfScene(restartLevelDelay, reloadSceneAction);
 	}
 
 	// void ReloadScene()
@@ -59,7 +64,7 @@ public class LevelLoader : MonoBehaviour
 
 	public void NextLevel()
 	{
-		SceneTransition.Instance.TransitionOutOfScene(transitionOutDelay, NextLevelChecker);
+		SceneTransition.Instance.TransitionOutOfScene(nextLevelDelay, NextLevelChecker);
 	}
 
 	void NextLevelChecker()

@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager Instance;
 
-	[SerializeField] Player playerPrefab;
 	[SerializeField] float levelReloadDelay = 0.4f;
 
 	public static bool isLevelFirstEntered = true;
@@ -23,12 +22,6 @@ public class GameManager : MonoBehaviour
 			DontDestroyOnLoad(gameObject);
 			Instance = this;
 		}
-	}
-
-	public void SpawnPlayer()
-	{
-		Player playerInstance = Instantiate(playerPrefab);
-		playerInstance.Spawn(LevelLoader.Instance.playerSpawnPoint);
 	}
 
 	public void WinLevel()

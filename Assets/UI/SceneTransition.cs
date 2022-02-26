@@ -16,6 +16,10 @@ public class SceneTransition : MonoBehaviour
 
 	private void Start()
 	{
+	}
+
+	public void InitializeTransition()
+	{
 		if (cTransition != null)
 		{
 			cTransition.gameObject.SetActive(true);
@@ -25,7 +29,7 @@ public class SceneTransition : MonoBehaviour
 
 	public void TransitionIntoScene(float delay, Action transitionEndCallback)
 	{
-		if (cTransition != null)
+		if (cTransition != null && cTransition.gameObject.activeInHierarchy)
 		{
 			cTransition.ExpandOut(delay, transitionEndCallback);
 		}
