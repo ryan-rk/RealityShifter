@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
 	Rigidbody2D rb;
 	Collider2D col;
-	GroundCheck groundCheck;
+	[HideInInspector] public GroundCheck groundCheck { get; private set; }
 
 	public event Action OnPlayerDeath;
 	public event Action OnPlayerWin;
@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
 	{
 		if (groundCheck.isGrounded)
 		{
+			rb.velocity = Vector2.zero;
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
 		}
 	}

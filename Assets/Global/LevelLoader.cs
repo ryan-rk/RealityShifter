@@ -25,15 +25,7 @@ public class LevelLoader : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		LevelStartScreen tutorialScreen = FindObjectOfType<LevelStartScreen>();
-		if (!GameManager.isLevelFirstEntered)
-		{
-			tutorialScreen?.StartPlaying();
-		}
-		if (tutorialScreen == null)
-		{
-			InitializeLevel();
-		}
+		InitializeLevel();
 	}
 
 	public void InitializeLevel()
