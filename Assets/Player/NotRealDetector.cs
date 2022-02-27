@@ -11,7 +11,10 @@ public class NotRealDetector : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		RealityManager.Instance.OnRealityShifted += CheckTrappedShifting;
+		if (RealityManager.Instance != null)
+		{
+			RealityManager.Instance.OnRealityShifted += CheckTrappedShifting;
+		}
 	}
 
 	// Update is called once per frame
@@ -29,7 +32,10 @@ public class NotRealDetector : MonoBehaviour
 
 	private void OnDisable()
 	{
-		RealityManager.Instance.OnRealityShifted -= CheckTrappedShifting;
+		if (RealityManager.Instance != null)
+		{
+			RealityManager.Instance.OnRealityShifted -= CheckTrappedShifting;
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D other)

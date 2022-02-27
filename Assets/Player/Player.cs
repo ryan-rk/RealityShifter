@@ -49,7 +49,10 @@ public class Player : MonoBehaviour
 		}
 		if (groundCheck.isGrounded)
 		{
-			RealityManager.Instance.RecoverShift();
+			if (RealityManager.Instance != null)
+			{
+				RealityManager.Instance.RecoverShift();
+			}
 		}
 	}
 
