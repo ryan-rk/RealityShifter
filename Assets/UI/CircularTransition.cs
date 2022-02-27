@@ -48,9 +48,13 @@ public class CircularTransition : MonoBehaviour
 	public void ExpandOut(float delay, Action transitionEndCallback)
 	{
 		Player player = FindObjectOfType<Player>();
-		if (player != null)
+		if (player != null && !isFollowMouse)
 		{
 			mask.rectTransform.anchoredPosition = Camera.main.WorldToScreenPoint(player.transform.position) / canvasRectTransform.localScale.x;
+		}
+		else if (isFollowMouse)
+		{
+			mask.rectTransform.anchoredPosition = Input.mousePosition / canvasRectTransform.localScale.x;
 		}
 		else
 		{

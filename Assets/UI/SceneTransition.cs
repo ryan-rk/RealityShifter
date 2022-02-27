@@ -40,6 +40,20 @@ public class SceneTransition : MonoBehaviour
 		// StartCoroutine(DelayTransitionIn(delay, transitionEndCallback));
 	}
 
+	public void TransitionIntoSceneAtMouse(float delay, Action transitionEndCallback)
+	{
+		if (cTransition != null && gameObject.activeInHierarchy)
+		{
+			cTransition.isFollowMouse = true;
+			cTransition.ExpandOut(delay, transitionEndCallback);
+		}
+		else
+		{
+			transitionEndCallback();
+		}
+		// StartCoroutine(DelayTransitionIn(delay, transitionEndCallback));
+	}
+
 	// IEnumerator DelayTransitionIn(float delay, Action transitionEndCallback)
 	// {
 	// 	yield return new WaitForSeconds(delay);

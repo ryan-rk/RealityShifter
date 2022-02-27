@@ -27,6 +27,7 @@ public class PauseMenu : MonoBehaviour
 	public void PauseGame()
 	{
 		StopAllCoroutines();
+		AudioManager.Instance.PlaySound("Click");
 		isPaused = true;
 		pauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
@@ -35,6 +36,7 @@ public class PauseMenu : MonoBehaviour
 	public void ResumeGame()
 	{
 		pauseMenuUIAnimator.Play("Close");
+		AudioManager.Instance.PlaySound("Click");
 		StartCoroutine(DelayResumingGame());
 	}
 
@@ -51,10 +53,16 @@ public class PauseMenu : MonoBehaviour
 		Debug.Log("Returning to main menu");
 		Time.timeScale = 1f;
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(0));
+		AudioManager.Instance.PlaySound("Click");
 	}
 
 	public void ReturnToStageSelect()
 	{
 		Debug.Log("Returning to stage select");
+		Time.timeScale = 1f;
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(1));
+		AudioManager.Instance.PlaySound("Click");
+		AudioManager.Instance.StopSound("LevelBGM", true);
+		AudioManager.Instance.PlaySound("StartMenu", 0);
 	}
 }

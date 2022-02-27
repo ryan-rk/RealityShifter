@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
 		{
 			rb.velocity = Vector2.zero;
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+			AudioManager.Instance.PlaySound("Jump");
 		}
 	}
 
@@ -87,6 +88,8 @@ public class Player : MonoBehaviour
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		col.enabled = false;
+		AudioManager.Instance.PlaySound("Hit");
+		AudioManager.Instance.PlaySound("Death");
 		spriteAnimator.Play("Death");
 		ScreenShaker mainVcamScreenShaker = CameraManager.Instance.mainVcamScreenShaker;
 		if (mainVcamScreenShaker != null)
@@ -113,6 +116,8 @@ public class Player : MonoBehaviour
 	{
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
+		AudioManager.Instance.PlaySound("Win");
+		AudioManager.Instance.PlaySound("Teleport");
 		spriteAnimator.Play("Win");
 		winParticle.Play();
 		OnPlayerWin?.Invoke();
