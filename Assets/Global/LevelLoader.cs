@@ -72,13 +72,13 @@ public class LevelLoader : MonoBehaviour
 		}
 	}
 
-	// private void OnDrawGizmos()
-	// {
-	// 	if (isDrawSpawnPoint)
-	// 	{
-	// 		Gizmos.color = Color.cyan;
-	// 		Gizmos.DrawIcon(playerSpawnPoint, "Record Off", true);
-	// 		UnityEditor.EditorGUIUtility.IconContent("Record Off");
-	// 	}
-	// }
+	private void OnDrawGizmos()
+	{
+		if (isDrawSpawnPoint)
+		{
+			Gizmos.color = Color.cyan;
+			Gizmos.DrawIcon(playerSpawnPoint, "Record Off", true);
+			UnityEditor.EditorGUIUtility.IconContent("Record Off");
+		}
+	}
 }

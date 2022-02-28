@@ -13,7 +13,10 @@ public class OverlayBorders : MonoBehaviour
 	void Start()
 	{
 		UpdateBordersColor();
-		RealityManager.Instance.OnRealityShifted += UpdateBordersColor;
+		if (RealityManager.Instance != null)
+		{
+			RealityManager.Instance.OnRealityShifted += UpdateBordersColor;
+		}
 	}
 
 	// Update is called once per frame
@@ -26,7 +29,10 @@ public class OverlayBorders : MonoBehaviour
 	{
 		foreach (Image borderImage in bordersImages)
 		{
-			borderImage.color = RealityManager.Instance.currentPlaneIsReal ? realColor : notRealColor;
+			if (RealityManager.Instance != null)
+			{
+				borderImage.color = RealityManager.Instance.currentPlaneIsReal ? realColor : notRealColor;
+			}
 		}
 	}
 }
