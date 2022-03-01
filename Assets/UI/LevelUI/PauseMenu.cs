@@ -53,7 +53,11 @@ public class PauseMenu : MonoBehaviour
 		Debug.Log("Returning to main menu");
 		Time.timeScale = 1f;
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(0));
-		AudioManager.Instance.PlaySound("Click");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+			AudioManager.Instance.StopSound("LevelBGM", true);
+		}
 	}
 
 	public void ReturnToStageSelect()
@@ -61,8 +65,10 @@ public class PauseMenu : MonoBehaviour
 		Debug.Log("Returning to stage select");
 		Time.timeScale = 1f;
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(1));
-		AudioManager.Instance.PlaySound("Click");
-		AudioManager.Instance.StopSound("LevelBGM", true);
-		AudioManager.Instance.PlaySound("StartMenu", 0);
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+			AudioManager.Instance.StopSound("LevelBGM", true);
+		}
 	}
 }

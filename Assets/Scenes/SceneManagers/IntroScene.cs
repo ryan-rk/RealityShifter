@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IntroScene : MonoBehaviour
 {
+	[SerializeField] float sceneLoadDelay = 1f;
 	[SerializeField] float playerFirstDialogueDelay = 2f;
 	[SerializeField] float dialogueEndDelay = 1f;
 
@@ -18,6 +19,8 @@ public class IntroScene : MonoBehaviour
 	[SerializeField] PlayerDialogueUI playerDialogueUI;
 	[SerializeField] NarratorDialogueUI narratorDialogueUI;
 	[SerializeField] UIShaker playerDialogueShaker;
+
+	[SerializeField] float bgmStopDelay = 1f;
 
 	bool canDialogueProceed = false;
 	int currentDialogueSequence = 0;
@@ -37,9 +40,37 @@ public class IntroScene : MonoBehaviour
 	{
 		// dialogueBoxAnimator.gameObject.SetActive(false);
 		// StartPlayerDialogue();
-		StartCoroutine(DelayStartingDialogue());
+		StartCoroutine(DelayIntroCutscene());
 		playerDialogueUI.OnDialogueUIEnd += SwitchDialogueToNarrator;
 		narratorDialogueUI.OnDialogueUIEnd += SwitchDialogueToPlayer;
+		narratorDialogueUI.OnNoMoreDialogueBlock += MovePlayerToGoal;
+	}
+
+	void MovePlayerToGoal()
+	{
+		Player player = GameObject.FindObjectOfType<Player>();
+		player.horizontalMovement = 1;
+		narratorDialogueUI.OnNoMoreDialogueBlock -= MovePlayerToGoal;
+		StartCoroutine(StopBGMAfterDelay());
+	}
+
+	IEnumerator StopBGMAfterDelay()
+	{
+		yield return new WaitForSeconds(bgmStopDelay);
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.StopSound("Intro", true);
+		}
+	}
+
+	IEnumerator DelayIntroCutscene()
+	{
+		yield return new WaitForSeconds(sceneLoadDelay);
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Intro");
+		}
+		StartCoroutine(DelayStartingDialogue());
 	}
 
 	void AwakePlayer(Player player)

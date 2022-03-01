@@ -14,17 +14,30 @@ public class EndGameMenu : MonoBehaviour
 
 	private void Start()
 	{
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("GameEnd");
+		}
 		StartCoroutine(StartEndingSequence());
 	}
 
 	public void QuitGame()
 	{
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Quit");
+		}
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => Application.Quit());
 	}
 
 	public void BackToMainMenu()
 	{
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(0));
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+			AudioManager.Instance.StopSound("GameEnd", true);
+		}
 	}
 
 	IEnumerator StartEndingSequence()
@@ -42,7 +55,6 @@ public class EndGameMenu : MonoBehaviour
 			yield return null;
 			titleCanvasGroup.alpha += titleFadeInSpeed * Time.deltaTime;
 		}
-		Debug.Log("Title fade in completed");
 	}
 
 }

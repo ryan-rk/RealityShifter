@@ -46,6 +46,10 @@ public class OutroScene : MonoBehaviour
 	{
 		// dialogueBoxAnimator.gameObject.SetActive(false);
 		// StartPlayerDialogue();
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Intro");
+		}
 		playerDialogueUI.OnDialogueUIEnd += PlayerExitingScene;
 		narratorDialogueUI.OnDialogueUIEnd += StartOutroEndingScene;
 		exit.OnPlayerReachedExit += SwitchDialogueToNarrator;
@@ -72,6 +76,10 @@ public class OutroScene : MonoBehaviour
 
 	IEnumerator OutroEndingSequence()
 	{
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.StopSound("Intro", true);
+		}
 		yield return new WaitForSeconds(narratorEndToGlithDelay);
 		CameraManager.Instance.mainVcamScreenShaker.ScreenShake(glitchScreenShakeIntensity, glitchScreenShakeDuration);
 		backgroundMasks.SetActive(true);
@@ -83,6 +91,10 @@ public class OutroScene : MonoBehaviour
 		yield return new WaitForSeconds(glitchDuration);
 		backgroundMasks.SetActive(false);
 		yield return new WaitForSeconds(glitchInterval);
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Glitch");
+		}
 		CameraManager.Instance.mainVcamScreenShaker.ScreenShake(glitchScreenShakeIntensity, glitchScreenShakeDuration);
 		if (AudioManager.Instance != null)
 		{

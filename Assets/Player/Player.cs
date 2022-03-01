@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
 	public void SetDeath()
 	{
 		horizontalMovement = 0;
-		// rb.velocity = Vector2.zero;
+		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		col.enabled = false;
 		if (AudioManager.Instance != null)
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
 	public void SetWin()
 	{
 		horizontalMovement = 0;
-		// rb.velocity = Vector2.zero;
+		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		if (AudioManager.Instance != null)
 		{

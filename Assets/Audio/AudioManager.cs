@@ -15,16 +15,26 @@ public class AudioManager : MonoBehaviour
 
 	private void Awake()
 	{
-		if (Instance == null)
+		// if (Instance == null)
+		// {
+		// 	Instance = this;
+		// }
+		// else
+		// {
+		// 	Destroy(gameObject);
+		// 	return;
+		// }
+		// DontDestroyOnLoad(gameObject);
+		if (Instance != null && Instance != this)
 		{
-			Instance = this;
+			Destroy(gameObject);
 		}
 		else
 		{
-			Destroy(gameObject);
-			return;
+			DontDestroyOnLoad(gameObject);
+			Instance = this;
 		}
-		DontDestroyOnLoad(gameObject);
+
 		foreach (Sound sound in sounds)
 		{
 			if (sound.isSoundEffect)
@@ -39,6 +49,7 @@ public class AudioManager : MonoBehaviour
 			sound.source.volume = sound.volume;
 			sound.source.pitch = sound.pitch;
 			sound.source.loop = sound.loop;
+			sound.source.playOnAwake = false;
 		}
 	}
 
@@ -50,7 +61,11 @@ public class AudioManager : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
+		if (Input.GetKeyDown(KeyCode.J))
+		{
+			Sound targetSound = Array.Find<Sound>(sounds, sound => sound.soundName == "StartMenu");
+			Debug.Log(targetSound.source.isPlaying);
+		}
 	}
 
 	public void PlaySound(string name, float startVolume)
@@ -59,6 +74,11 @@ public class AudioManager : MonoBehaviour
 		if (targetSound == null)
 		{
 			Debug.LogWarning("Sound not found");
+			return;
+		}
+		if (!targetSound.isSoundEffect && targetSound.source.isPlaying)
+		{
+			Debug.Log("Sound is already playing: " + targetSound.soundName);
 			return;
 		}
 		targetSound.source.volume = startVolume;
@@ -77,6 +97,11 @@ public class AudioManager : MonoBehaviour
 			Debug.LogWarning("Sound not found");
 			return;
 		}
+		if (!targetSound.isSoundEffect && targetSound.source.isPlaying)
+		{
+			Debug.Log("Sound is already playing: " + targetSound.soundName);
+			return;
+		}
 		targetSound.source.Play();
 	}
 
@@ -87,7 +112,6 @@ public class AudioManager : MonoBehaviour
 			yield return null;
 			source.volume = Mathf.MoveTowards(source.volume, targetVolume, fadeInSpeed * Time.deltaTime);
 		}
-		Debug.Log("Sound fade in ended");
 	}
 
 	public void StopSound(string name, bool isFade)
@@ -115,6 +139,6 @@ public class AudioManager : MonoBehaviour
 			yield return null;
 			source.volume = Mathf.MoveTowards(source.volume, 0, fadeOutSpeed * Time.deltaTime);
 		}
-		Debug.Log("Sound fade out ended");
+		source.Stop();
 	}
 }

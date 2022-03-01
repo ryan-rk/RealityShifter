@@ -12,6 +12,10 @@ public class StageSelectManager : MonoBehaviour
 	{
 		SceneTransition.Instance.InitializeTransition();
 		SceneTransition.Instance.TransitionIntoSceneAtMouse(transitionInDelay, () => { });
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("StartMenu", 0);
+		}
 	}
 
 	// Update is called once per frame
@@ -26,18 +30,20 @@ public class StageSelectManager : MonoBehaviour
 		if (AudioManager.Instance != null)
 		{
 			AudioManager.Instance.PlaySound("Click");
-			AudioManager.Instance.StopSound("LevelBGM", true);
 		}
 	}
 
 	public void LoadStage(int stageNum)
 	{
-		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(stageNum + 1));
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(stageNum + 2));
 		if (AudioManager.Instance != null)
 		{
 			AudioManager.Instance.PlaySound("Start");
 			AudioManager.Instance.StopSound("StartMenu", true);
-			AudioManager.Instance.PlaySound("LevelBGM", 0);
+			if (stageNum >= 1 && stageNum <= 8)
+			{
+				AudioManager.Instance.PlaySound("LevelBGM", 0);
+			}
 		}
 	}
 

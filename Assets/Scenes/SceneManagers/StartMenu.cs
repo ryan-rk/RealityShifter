@@ -12,19 +12,28 @@ public class StartMenu : MonoBehaviour
 	{
 		SceneTransition.Instance.InitializeTransition();
 		SceneTransition.Instance.TransitionIntoScene(transitionInDelay, () => { });
-		AudioManager.Instance.PlaySound("StartMenu", 0);
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("StartMenu", 0);
+		}
 	}
 
 	public void QuitGame()
 	{
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => Application.Quit());
-		AudioManager.Instance.PlaySound("Click");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Quit");
+		}
 	}
 
 	public void StartGame()
 	{
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, StartFirstLevel);
-		AudioManager.Instance.PlaySound("Start");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Start");
+		}
 	}
 
 	void StartFirstLevel()

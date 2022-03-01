@@ -286,7 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22940293409a84653ae6c2a9f1e0f3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFirstDialogueDelay: 2
+  sceneLoadDelay: 1.8
+  playerFirstDialogueDelay: 2.5
   dialogueEndDelay: 0.4
   screenShakeIntensity: 0.1
   screenShakeDuration: 0.2
@@ -294,6 +295,7 @@ MonoBehaviour:
   playerDialogueUI: {fileID: 343180734}
   narratorDialogueUI: {fileID: 1200444647}
   playerDialogueShaker: {fileID: 343180735}
+  bgmStopDelay: 0.5
 --- !u!1 &312049559
 GameObject:
   m_ObjectHideFlags: 0
@@ -5561,6 +5563,10 @@ PrefabInstance:
       objectReference: {fileID: 2034406640107199685, guid: d9e190f4c586342c4bca6fc7f2274d98, type: 3}
     - target: {fileID: 59062165473985472, guid: 478c3d68b3de64339adfa99a147f36bf, type: 3}
       propertyPath: isDrawSpawnPoint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 59062165473985472, guid: 478c3d68b3de64339adfa99a147f36bf, type: 3}
+      propertyPath: transitionInDelay
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 59062165473985472, guid: 478c3d68b3de64339adfa99a147f36bf, type: 3}

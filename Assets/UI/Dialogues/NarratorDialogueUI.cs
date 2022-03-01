@@ -9,14 +9,14 @@ public class NarratorDialogueUI : DialogueUIController
 	[SerializeField] Animator animator;
 	[SerializeField] DialogueTrigger narratorDialogueTrigger;
 	public event Action OnDialogueUIEnd;
+	public event Action OnNoMoreDialogueBlock;
 
 	public override void StartDialogueUI()
 	{
 		if (narratorDialogueTrigger.dialogueBlocksQueue.Count == 0)
 		{
 			Debug.Log("No more conversation from narrator");
-			Player player = GameObject.FindObjectOfType<Player>();
-			player.horizontalMovement = 1;
+			OnNoMoreDialogueBlock?.Invoke();
 			return;
 		}
 		animator.Play("FadeIn");

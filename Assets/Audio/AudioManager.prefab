@@ -51,11 +51,32 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 53355ba44b64b44e58f92b035157ac36, type: 3}
     isSoundEffect: 0
     loop: 1
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: LevelBGM
+    clip: {fileID: 8300000, guid: 6e8e99e491b434aa7b47995211b35ccd, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Intro
+    clip: {fileID: 8300000, guid: ae4ee47d7844a4d7fa03a67c2fea15c0, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: GameEnd
+    clip: {fileID: 8300000, guid: 9028237dd40604941b7bf40565978497, type: 3}
+    isSoundEffect: 0
+    loop: 1
     volume: 1
     pitch: 1
     source: {fileID: 0}
   - soundName: Click
-    clip: {fileID: 8300000, guid: b71214fe953b448ed838b5830203f8be, type: 3}
+    clip: {fileID: 8300000, guid: b11b5ad95b7a14949a116b8c36ed0a7f, type: 3}
     isSoundEffect: 1
     loop: 0
     volume: 1
@@ -65,70 +86,63 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c1d67533dec894e8eaea7e8492250696, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 1
+    volume: 0.7
     pitch: 1
     source: {fileID: 0}
   - soundName: Start
     clip: {fileID: 8300000, guid: e0579dba8e4b449a78a0facfa4bf6723, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 1
+    volume: 0.5
     pitch: 1
     source: {fileID: 0}
   - soundName: Jump
     clip: {fileID: 8300000, guid: 939833886f8ef4816894815759636939, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 0.2
-    pitch: 2
+    volume: 0.4
+    pitch: 1.2
     source: {fileID: 0}
   - soundName: Death
     clip: {fileID: 8300000, guid: 193191e1888b14f82ad79ad8fdb38a4b, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 2
+    volume: 1
     pitch: 1
     source: {fileID: 0}
   - soundName: Win
     clip: {fileID: 8300000, guid: 51b7ffcc6e4e94f02929d5f3136dbaf6, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 0.7
-    pitch: 1
-    source: {fileID: 0}
-  - soundName: LevelBGM
-    clip: {fileID: 8300000, guid: 6e8e99e491b434aa7b47995211b35ccd, type: 3}
-    isSoundEffect: 0
-    loop: 1
-    volume: 1
+    volume: 0.4
     pitch: 1
     source: {fileID: 0}
   - soundName: Hit
     clip: {fileID: 8300000, guid: eeeedc04a24e5433eb441a7339dd9da9, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 5
+    volume: 1
     pitch: 1
     source: {fileID: 0}
   - soundName: ShiftUp
     clip: {fileID: 8300000, guid: c55f370d21ed54a958df480a732fe836, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 1
+    volume: 0.4
     pitch: 1
     source: {fileID: 0}
   - soundName: ShiftDown
     clip: {fileID: 8300000, guid: 539362f203b5f47e2bcfdb1e20d48893, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 1
+    volume: 0.4
     pitch: 1
     source: {fileID: 0}
   - soundName: Teleport
     clip: {fileID: 8300000, guid: 6102baeb59b824e7eb0e7c547b1fd97d, type: 3}
     isSoundEffect: 1
     loop: 0
-    volume: 1.5
+    volume: 1
     pitch: 1
     source: {fileID: 0}
   soundEffectContainer: {fileID: 2739325957898824883}
