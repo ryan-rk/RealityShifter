@@ -40,13 +40,11 @@ public class DialogueManager : MonoBehaviour
 			return;
 		}
 		string nextSentence = sentences.Dequeue();
-		Debug.Log("show next sentence");
 		OnNextSentenceReady?.Invoke(nextSentence);
 	}
 
 	void EndDialogue()
 	{
-		Debug.Log("Dialogue ended");
 		OnDialogueEnded?.Invoke();
 	}
 }

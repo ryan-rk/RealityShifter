@@ -65,9 +65,12 @@ public class Player : MonoBehaviour
 	{
 		if (groundCheck.isGrounded)
 		{
-			rb.velocity = Vector2.zero;
+			rb.velocity = new Vector2(rb.velocity.x, 0);
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-			AudioManager.Instance.PlaySound("Jump");
+			if (AudioManager.Instance != null)
+			{
+				AudioManager.Instance.PlaySound("Jump");
+			}
 		}
 	}
 
@@ -85,11 +88,15 @@ public class Player : MonoBehaviour
 
 	public void SetDeath()
 	{
-		rb.velocity = Vector2.zero;
+		horizontalMovement = 0;
+		// rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		col.enabled = false;
-		AudioManager.Instance.PlaySound("Hit");
-		AudioManager.Instance.PlaySound("Death");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Hit");
+			AudioManager.Instance.PlaySound("Death");
+		}
 		spriteAnimator.Play("Death");
 		ScreenShaker mainVcamScreenShaker = CameraManager.Instance.mainVcamScreenShaker;
 		if (mainVcamScreenShaker != null)
@@ -114,10 +121,14 @@ public class Player : MonoBehaviour
 
 	public void SetWin()
 	{
-		rb.velocity = Vector2.zero;
+		horizontalMovement = 0;
+		// rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
-		AudioManager.Instance.PlaySound("Win");
-		AudioManager.Instance.PlaySound("Teleport");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Win");
+			AudioManager.Instance.PlaySound("Teleport");
+		}
 		spriteAnimator.Play("Win");
 		winParticle.Play();
 		OnPlayerWin?.Invoke();

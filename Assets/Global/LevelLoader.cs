@@ -17,6 +17,8 @@ public class LevelLoader : MonoBehaviour
 	public Vector2 playerSpawnPoint;
 	[SerializeField] bool isDrawSpawnPoint;
 
+	public event Action<Player> OnPlayerSpawned;
+
 	private void Awake()
 	{
 		Instance = this;
@@ -32,6 +34,7 @@ public class LevelLoader : MonoBehaviour
 	{
 		Player playerInstance = Instantiate(playerPrefab);
 		playerInstance.Spawn(LevelLoader.Instance.playerSpawnPoint);
+		OnPlayerSpawned?.Invoke(playerInstance);
 		SceneTransition.Instance.InitializeTransition();
 		SceneTransition.Instance.TransitionIntoScene(transitionInDelay, () => { });
 		GameManager.isLevelFirstEntered = false;

@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntroScene : MonoBehaviour
+public class OutroScene : MonoBehaviour
 {
-	[SerializeField] float playerFirstDialogueDelay = 2f;
-	[SerializeField] float dialogueEndDelay = 1f;
+	[SerializeField] float playerStopPoint = 0f;
+	Player player;
+	bool hasPlayerReachedStopPoint = false;
+	[SerializeField] float dialogueEndDelay = 0f;
 
-	[SerializeField] float screenShakeIntensity = 2f;
-	[SerializeField] float screenShakeDuration = 0.2f;
-	[SerializeField] float screenShakeFrequency = 10f;
-	// [SerializeField] DialogueTrigger playerDialogueTrigger;
-	// [SerializeField] Animator dialogueBoxAnimator;
-	// [SerializeField] TMP_Text playerText;
-
-	// [SerializeField] DialogueTrigger narratorDialogueTrigger;
 	[SerializeField] PlayerDialogueUI playerDialogueUI;
 	[SerializeField] NarratorDialogueUI narratorDialogueUI;
-	[SerializeField] UIShaker playerDialogueShaker;
+	[SerializeField] Exit exit;
+
+	[SerializeField] float narratorEndToGlithDelay = 1f;
+	[SerializeField] float glitchDuration = 0.1f;
+	[SerializeField] float glitchInterval = 0.5f;
+	[SerializeField] float glitchScreenShakeIntensity = 5f;
+	[SerializeField] float glitchScreenShakeDuration = 0.2f;
+	[SerializeField] float sceneTransitionOutDelay = 2f;
+
+	[SerializeField] GameObject backgroundFG;
+	[SerializeField] GameObject backgroundMasks;
+	[SerializeField] GameObject realSign;
+	[SerializeField] GameObject fakeSign;
+	[SerializeField] ParticleSystem exitParticle;
+	[SerializeField] Color fakeExitParticleColor;
 
 	bool canDialogueProceed = false;
 	int currentDialogueSequence = 0;
@@ -30,30 +38,63 @@ public class IntroScene : MonoBehaviour
 	private void OnEnable()
 	{
 		LevelLoader levelLoader = FindObjectOfType<LevelLoader>();
-		levelLoader.OnPlayerSpawned += AwakePlayer;
+		levelLoader.OnPlayerSpawned += PlayerEnteringScene;
 	}
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		// dialogueBoxAnimator.gameObject.SetActive(false);
 		// StartPlayerDialogue();
-		StartCoroutine(DelayStartingDialogue());
-		playerDialogueUI.OnDialogueUIEnd += SwitchDialogueToNarrator;
-		narratorDialogueUI.OnDialogueUIEnd += SwitchDialogueToPlayer;
+		playerDialogueUI.OnDialogueUIEnd += PlayerExitingScene;
+		narratorDialogueUI.OnDialogueUIEnd += StartOutroEndingScene;
+		exit.OnPlayerReachedExit += SwitchDialogueToNarrator;
 	}
 
-	void AwakePlayer(Player player)
+	void PlayerEnteringScene(Player player)
 	{
-		Animator animator = player.GetComponentInChildren<Animator>();
-		animator.Play("Awake");
-		LevelLoader.Instance.OnPlayerSpawned -= AwakePlayer;
+		Debug.Log("player entering scene");
+		this.player = player;
+		player.horizontalMovement = 1f;
 	}
 
-	IEnumerator DelayStartingDialogue()
+	void PlayerExitingScene()
 	{
-		yield return new WaitForSeconds(playerFirstDialogueDelay);
-		canDialogueProceed = true;
-		playerDialogueUI.StartDialogueUI();
+		player.horizontalMovement = 1f;
+		playerDialogueUI.OnDialogueUIEnd -= PlayerExitingScene;
+	}
+
+	void StartOutroEndingScene()
+	{
+		Debug.Log("Starting outro ending scene");
+		StartCoroutine(OutroEndingSequence());
+	}
+
+	IEnumerator OutroEndingSequence()
+	{
+		yield return new WaitForSeconds(narratorEndToGlithDelay);
+		CameraManager.Instance.mainVcamScreenShaker.ScreenShake(glitchScreenShakeIntensity, glitchScreenShakeDuration);
+		backgroundMasks.SetActive(true);
+		yield return new WaitForSeconds(glitchDuration);
+		backgroundMasks.SetActive(false);
+		yield return new WaitForSeconds(glitchInterval);
+		CameraManager.Instance.mainVcamScreenShaker.ScreenShake(glitchScreenShakeIntensity, glitchScreenShakeDuration);
+		backgroundMasks.SetActive(true);
+		yield return new WaitForSeconds(glitchDuration);
+		backgroundMasks.SetActive(false);
+		yield return new WaitForSeconds(glitchInterval);
+		CameraManager.Instance.mainVcamScreenShaker.ScreenShake(glitchScreenShakeIntensity, glitchScreenShakeDuration);
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("ShiftDown");
+		}
+		backgroundFG.SetActive(false);
+		realSign.SetActive(false);
+		fakeSign.SetActive(true);
+		var mainModule = exitParticle.main;
+		mainModule.startColor = fakeExitParticleColor;
+		yield return new WaitForSeconds(sceneTransitionOutDelay);
+		LevelLoader.Instance.NextLevel();
 	}
 
 	// Update is called once per frame
@@ -63,9 +104,16 @@ public class IntroScene : MonoBehaviour
 		{
 			currentDialogueSequence += 1;
 			DialogueManager.Instance.PrepareNextSentence();
-			if (currentDialogueSequence == 3)
+		}
+
+		if (player != null)
+		{
+			if (player.transform.position.x >= playerStopPoint && !hasPlayerReachedStopPoint)
 			{
-				playerDialogueShaker.UIShake(screenShakeIntensity, screenShakeDuration, screenShakeFrequency);
+				hasPlayerReachedStopPoint = true;
+				player.horizontalMovement = 0f;
+				canDialogueProceed = true;
+				playerDialogueUI.StartDialogueUI();
 			}
 		}
 	}

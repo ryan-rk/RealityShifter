@@ -5,13 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class EndGameMenu : MonoBehaviour
 {
-	float transitionInDelay = 0.4f;
-	float transitionOutDelay = 0.1f;
+	float transitionInDelay = 2f;
+	float transitionOutDelay = 1f;
+	[SerializeField] GameObject overlayUI;
+	[SerializeField] float showTitleDelay = 3f;
+	[SerializeField] float titleFadeInSpeed = 1f;
+	[SerializeField] CanvasGroup titleCanvasGroup;
 
 	private void Start()
 	{
-		SceneTransition.Instance.InitializeTransition();
-		SceneTransition.Instance.TransitionIntoScene(transitionInDelay, () => { });
+		StartCoroutine(StartEndingSequence());
 	}
 
 	public void QuitGame()
@@ -22,6 +25,24 @@ public class EndGameMenu : MonoBehaviour
 	public void BackToMainMenu()
 	{
 		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(0));
+	}
+
+	IEnumerator StartEndingSequence()
+	{
+		yield return new WaitForSeconds(transitionInDelay);
+		overlayUI.SetActive(true);
+		StartCoroutine(ShowTitle());
+	}
+
+	IEnumerator ShowTitle()
+	{
+		yield return new WaitForSeconds(showTitleDelay);
+		while (titleCanvasGroup.alpha < 1)
+		{
+			yield return null;
+			titleCanvasGroup.alpha += titleFadeInSpeed * Time.deltaTime;
+		}
+		Debug.Log("Title fade in completed");
 	}
 
 }

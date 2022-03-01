@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2739325956874343866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2739325956874343867}
+  - component: {fileID: 2739325956874343860}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2739325956874343867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739325956874343866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2739325957898824876}
+  - {fileID: 2739325957752286593}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2739325956874343860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739325956874343866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85b2b853b7cb4359a2cdb1ad0b55701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - soundName: StartMenu
+    clip: {fileID: 8300000, guid: 53355ba44b64b44e58f92b035157ac36, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Click
+    clip: {fileID: 8300000, guid: b71214fe953b448ed838b5830203f8be, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Quit
+    clip: {fileID: 8300000, guid: c1d67533dec894e8eaea7e8492250696, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Start
+    clip: {fileID: 8300000, guid: e0579dba8e4b449a78a0facfa4bf6723, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Jump
+    clip: {fileID: 8300000, guid: 939833886f8ef4816894815759636939, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 0.2
+    pitch: 2
+    source: {fileID: 0}
+  - soundName: Death
+    clip: {fileID: 8300000, guid: 193191e1888b14f82ad79ad8fdb38a4b, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 2
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Win
+    clip: {fileID: 8300000, guid: 51b7ffcc6e4e94f02929d5f3136dbaf6, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 0.7
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: LevelBGM
+    clip: {fileID: 8300000, guid: 6e8e99e491b434aa7b47995211b35ccd, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Hit
+    clip: {fileID: 8300000, guid: eeeedc04a24e5433eb441a7339dd9da9, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 5
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: ShiftUp
+    clip: {fileID: 8300000, guid: c55f370d21ed54a958df480a732fe836, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: ShiftDown
+    clip: {fileID: 8300000, guid: 539362f203b5f47e2bcfdb1e20d48893, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Teleport
+    clip: {fileID: 8300000, guid: 6102baeb59b824e7eb0e7c547b1fd97d, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1.5
+    pitch: 1
+    source: {fileID: 0}
+  soundEffectContainer: {fileID: 2739325957898824883}
+  bgmContainer: {fileID: 2739325957752286592}
+  fadeInSpeed: 0.8
+  fadeOutSpeed: 1
+--- !u!1 &2739325957752286592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2739325957752286593}
+  m_Layer: 0
+  m_Name: BGMContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2739325957752286593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739325957752286592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2739325956874343867}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2739325957898824883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2739325957898824876}
+  m_Layer: 0
+  m_Name: SoundEffectContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2739325957898824876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739325957898824883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2739325956874343867}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StageSelectMenu.unity
     guid: fcde36181ce46429dbc261acc4ef7d18
   - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 37a0514bb6d83460aa3591202997694d
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 5e94bb82040fa4759befae73d3d97941
   - enabled: 1
@@ -35,6 +38,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level8.unity
     guid: b046098db51464af18c798668b6098fd
+  - enabled: 1
+    path: Assets/Scenes/OutroScene.unity
+    guid: 5efd1240d4fb946d1b9da08e9032d86e
   - enabled: 1
     path: Assets/Scenes/GameEndMenu.unity
     guid: 35c5beeeb2a3c4e71b08068f4781c62b
