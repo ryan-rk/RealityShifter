@@ -10179,6 +10179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   jumpForce: 15
+  shortJumpVelocityScale: 0.5
+  coyoteTime: 0.05
   horizontalMovement: 0
   playerSprite: {fileID: 7599565753642391092}
   deathShrinkSpeed: 5

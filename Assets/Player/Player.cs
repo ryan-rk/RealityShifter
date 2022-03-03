@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 	[SerializeField] float moveSpeed = 8f;
 	[SerializeField] float jumpForce = 20f;
 	[SerializeField] float shortJumpVelocityScale = 0.5f;
+	[SerializeField] float coyoteTime = 0.1f;
+	float remainingCoyote = 0;
 	public float horizontalMovement = 0f;
 
 	[SerializeField] GameObject playerSprite;
@@ -54,12 +56,22 @@ public class Player : MonoBehaviour
 		{
 			FlipSprite(false);
 		}
+
+
 		if (groundCheck.isGrounded)
 		{
+			// Coyote time management
+			remainingCoyote = coyoteTime;
+
+			// Reality Manage management
 			if (RealityManager.Instance != null)
 			{
 				RealityManager.Instance.RecoverShift();
 			}
+		}
+		else
+		{
+			remainingCoyote -= Time.deltaTime;
 		}
 	}
 
@@ -70,7 +82,8 @@ public class Player : MonoBehaviour
 
 	public void Jump()
 	{
-		if (groundCheck.isGrounded)
+		// if (groundCheck.isGrounded)
+		if (remainingCoyote > 0)
 		{
 			rb.velocity = new Vector2(rb.velocity.x, 0);
 			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);

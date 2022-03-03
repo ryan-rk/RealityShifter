@@ -90,7 +90,7 @@ public class IntroScene : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetButtonDown("Jump") && canDialogueProceed)
+		if (Input.GetButtonDown("Select") && canDialogueProceed)
 		{
 			currentDialogueSequence += 1;
 			DialogueManager.Instance.PrepareNextSentence();

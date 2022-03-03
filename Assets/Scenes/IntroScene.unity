@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneLoadDelay: 1.8
   playerFirstDialogueDelay: 2.5
-  dialogueEndDelay: 0.4
+  dialogueEndDelay: 0.8
   screenShakeIntensity: 0.1
   screenShakeDuration: 0.2
   screenShakeFrequency: 50
