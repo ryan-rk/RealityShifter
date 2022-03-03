@@ -58,7 +58,10 @@ public class RealityManager : MonoBehaviour
 			remainingShift = Mathf.Max(remainingShift - 1, 0);
 			currentPlaneIsReal = !currentPlaneIsReal;
 			CameraManager.Instance.ZoomShake();
-			AudioManager.Instance.PlaySound(currentPlaneIsReal ? "ShiftUp" : "ShiftDown");
+			if (AudioManager.Instance != null)
+			{
+				AudioManager.Instance.PlaySound(currentPlaneIsReal ? "ShiftUp" : "ShiftDown");
+			}
 			foreach (RealityState realityObject in managedRealityObjects)
 			{
 				realityObject.SetReality(!realityObject.isReal);

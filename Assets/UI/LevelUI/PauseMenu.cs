@@ -27,7 +27,10 @@ public class PauseMenu : MonoBehaviour
 	public void PauseGame()
 	{
 		StopAllCoroutines();
-		AudioManager.Instance.PlaySound("Click");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+		}
 		isPaused = true;
 		pauseMenuUI.SetActive(true);
 		Time.timeScale = 0f;
@@ -36,7 +39,10 @@ public class PauseMenu : MonoBehaviour
 	public void ResumeGame()
 	{
 		pauseMenuUIAnimator.Play("Close");
-		AudioManager.Instance.PlaySound("Click");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+		}
 		StartCoroutine(DelayResumingGame());
 	}
 

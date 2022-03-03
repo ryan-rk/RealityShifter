@@ -20,7 +20,7 @@ public class IntroScene : MonoBehaviour
 	[SerializeField] NarratorDialogueUI narratorDialogueUI;
 	[SerializeField] UIShaker playerDialogueShaker;
 
-	[SerializeField] float bgmStopDelay = 1f;
+	float bgmStopDelay = 0.1f;
 
 	bool canDialogueProceed = false;
 	int currentDialogueSequence = 0;
@@ -40,6 +40,10 @@ public class IntroScene : MonoBehaviour
 	{
 		// dialogueBoxAnimator.gameObject.SetActive(false);
 		// StartPlayerDialogue();
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Intro", 0);
+		}
 		StartCoroutine(DelayIntroCutscene());
 		playerDialogueUI.OnDialogueUIEnd += SwitchDialogueToNarrator;
 		narratorDialogueUI.OnDialogueUIEnd += SwitchDialogueToPlayer;
@@ -66,10 +70,6 @@ public class IntroScene : MonoBehaviour
 	IEnumerator DelayIntroCutscene()
 	{
 		yield return new WaitForSeconds(sceneLoadDelay);
-		if (AudioManager.Instance != null)
-		{
-			AudioManager.Instance.PlaySound("Intro");
-		}
 		StartCoroutine(DelayStartingDialogue());
 	}
 

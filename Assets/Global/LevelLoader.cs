@@ -48,6 +48,10 @@ public class LevelLoader : MonoBehaviour
 
 	public void RestartLevel()
 	{
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+		}
 		Action reloadSceneAction = () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		SceneTransition.Instance.TransitionOutOfScene(restartLevelDelay, reloadSceneAction);
 	}
@@ -71,6 +75,13 @@ public class LevelLoader : MonoBehaviour
 		else
 		{
 			GameManager.isLevelFirstEntered = true;
+			if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 3))
+			{
+				if (AudioManager.Instance != null)
+				{
+					AudioManager.Instance.StopSound("LevelBGM", true);
+				}
+			}
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
 	}

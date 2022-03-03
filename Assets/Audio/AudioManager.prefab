@@ -139,7 +139,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - soundName: Teleport
-    clip: {fileID: 8300000, guid: 6102baeb59b824e7eb0e7c547b1fd97d, type: 3}
+    clip: {fileID: 8300000, guid: 48f492be28aae4692b75323749d1c75c, type: 3}
     isSoundEffect: 1
     loop: 0
     volume: 1

@@ -325,8 +325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973e40946ff8444ec8e59aaa11e1cb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realColor: {r: 0.3537736, g: 1, b: 0.71822846, a: 1}
-  notRealColor: {r: 1, g: 0.5518868, b: 0.70916, a: 1}
+  realColor: {r: 0.22067462, g: 0.5377358, b: 0.39938185, a: 1}
+  notRealColor: {r: 0.5377358, g: 0.19023673, b: 0.2540135, a: 1}
   bordersImages:
   - {fileID: 1601225188735316021}
   - {fileID: 1601225187696551221}

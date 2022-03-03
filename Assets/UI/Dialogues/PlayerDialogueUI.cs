@@ -7,12 +7,14 @@ public class PlayerDialogueUI : DialogueUIController
 {
 	[SerializeField] Animator animator;
 	[SerializeField] DialogueTrigger playerDialogueTrigger;
+	[SerializeField] GameObject proceedIcon;
 	public event Action OnDialogueUIEnd;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		DialogueManager.Instance.OnSentenceStartTyping += HideProceedIcon;
+		DialogueManager.Instance.OnSentenceTyped += ShowProceedIcon;
 	}
 
 	// Update is called once per frame
@@ -40,6 +42,22 @@ public class PlayerDialogueUI : DialogueUIController
 		DialogueManager.Instance.OnDialogueEnded -= EndDialogueUI;
 		DialogueManager.Instance.OnNextSentenceReady -= UpdateDialogueText;
 		OnDialogueUIEnd?.Invoke();
+	}
+
+	void ShowProceedIcon()
+	{
+		proceedIcon.SetActive(true);
+	}
+
+	void HideProceedIcon()
+	{
+		proceedIcon.SetActive(false);
+	}
+
+	private void OnDisable()
+	{
+		DialogueManager.Instance.OnSentenceStartTyping -= HideProceedIcon;
+		DialogueManager.Instance.OnSentenceTyped -= ShowProceedIcon;
 	}
 
 }

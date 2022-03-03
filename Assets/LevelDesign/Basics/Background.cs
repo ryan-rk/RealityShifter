@@ -6,14 +6,20 @@ public class Background : MonoBehaviour
 {
 	[SerializeField] Color realColor;
 	[SerializeField] Color notRealColor;
-	SpriteRenderer bgSprite;
+	[SerializeField] SpriteRenderer bgColorSprite;
+	[SerializeField] SpriteRenderer bgImage;
+	[SerializeField] float bgImageMinX;
+	[SerializeField] float bgImageMaxX;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		bgSprite = GetComponent<SpriteRenderer>();
+		RandomizeBgImagePosition();
 		UpdateBackgroundColor();
-		RealityManager.Instance.OnRealityShifted += UpdateBackgroundColor;
+		if (RealityManager.Instance != null)
+		{
+			RealityManager.Instance.OnRealityShifted += UpdateBackgroundColor;
+		}
 	}
 
 	// Update is called once per frame
@@ -24,6 +30,15 @@ public class Background : MonoBehaviour
 
 	void UpdateBackgroundColor()
 	{
-		bgSprite.color = RealityManager.Instance.currentPlaneIsReal ? realColor : notRealColor;
+		if (RealityManager.Instance != null)
+		{
+			bgColorSprite.color = RealityManager.Instance.currentPlaneIsReal ? realColor : notRealColor;
+		}
+	}
+
+	void RandomizeBgImagePosition()
+	{
+		float randomPosition = Random.Range(bgImageMinX, bgImageMaxX);
+		bgImage.transform.position = new Vector2(randomPosition, bgImage.transform.position.y);
 	}
 }

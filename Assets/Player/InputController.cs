@@ -21,6 +21,10 @@ public class InputController : MonoBehaviour
 		{
 			player.Jump();
 		}
+		else if (Input.GetButtonUp("Jump"))
+		{
+			player.StopJump();
+		}
 		if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
 		{
 			RealityManager.Instance.ShiftRealityPlane();

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
 	[SerializeField] float moveSpeed = 8f;
 	[SerializeField] float jumpForce = 20f;
+	[SerializeField] float shortJumpVelocityScale = 0.5f;
 	public float horizontalMovement = 0f;
 
 	[SerializeField] GameObject playerSprite;
@@ -21,6 +22,12 @@ public class Player : MonoBehaviour
 	Rigidbody2D rb;
 	Collider2D col;
 	[HideInInspector] public GroundCheck groundCheck { get; private set; }
+
+	enum PlayerState
+	{
+		Default, Death, Win
+	}
+	PlayerState currentState = PlayerState.Default;
 
 	public event Action OnPlayerDeath;
 	public event Action OnPlayerWin;
@@ -74,6 +81,14 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	public void StopJump()
+	{
+		if (rb.velocity.y > 0)
+		{
+			rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * shortJumpVelocityScale);
+		}
+	}
+
 	public void FlipSprite(bool isFacingRight)
 	{
 		// flip body with parameter true if facing right, false if facing left
@@ -88,6 +103,11 @@ public class Player : MonoBehaviour
 
 	public void SetDeath()
 	{
+		if (currentState == PlayerState.Death)
+		{
+			return;
+		}
+		currentState = PlayerState.Death;
 		horizontalMovement = 0;
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
@@ -121,6 +141,11 @@ public class Player : MonoBehaviour
 
 	public void SetWin()
 	{
+		if (currentState == PlayerState.Win)
+		{
+			return;
+		}
+		currentState = PlayerState.Win;
 		horizontalMovement = 0;
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;

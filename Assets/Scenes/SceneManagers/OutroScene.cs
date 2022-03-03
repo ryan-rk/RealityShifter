@@ -21,6 +21,7 @@ public class OutroScene : MonoBehaviour
 	[SerializeField] float sceneTransitionOutDelay = 2f;
 
 	[SerializeField] GameObject backgroundFG;
+	[SerializeField] GameObject backgroundBG;
 	[SerializeField] GameObject backgroundMasks;
 	[SerializeField] GameObject realSign;
 	[SerializeField] GameObject fakeSign;
@@ -48,7 +49,7 @@ public class OutroScene : MonoBehaviour
 		// StartPlayerDialogue();
 		if (AudioManager.Instance != null)
 		{
-			AudioManager.Instance.PlaySound("Intro");
+			AudioManager.Instance.PlaySound("Intro", 0);
 		}
 		playerDialogueUI.OnDialogueUIEnd += PlayerExitingScene;
 		narratorDialogueUI.OnDialogueUIEnd += StartOutroEndingScene;
@@ -95,6 +96,7 @@ public class OutroScene : MonoBehaviour
 		{
 			AudioManager.Instance.PlaySound("Glitch");
 		}
+		backgroundBG.SetActive(true);
 		CameraManager.Instance.mainVcamScreenShaker.ScreenShake(glitchScreenShakeIntensity, glitchScreenShakeDuration);
 		if (AudioManager.Instance != null)
 		{

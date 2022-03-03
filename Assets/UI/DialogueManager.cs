@@ -9,6 +9,10 @@ public class DialogueManager : MonoBehaviour
 	Queue<string> sentences = new Queue<string>();
 	public event Action<string> OnNextSentenceReady;
 	public event Action OnDialogueEnded;
+	public event Action OnSentenceStartTyping;
+	public event Action OnSentenceTyped;
+
+	WaitForSeconds typingIntervalWait = new WaitForSeconds(0.02f);
 
 	private void Awake()
 	{
@@ -40,7 +44,23 @@ public class DialogueManager : MonoBehaviour
 			return;
 		}
 		string nextSentence = sentences.Dequeue();
-		OnNextSentenceReady?.Invoke(nextSentence);
+		// OnNextSentenceReady?.Invoke(nextSentence);
+		StopAllCoroutines();
+		StartCoroutine(TypingSentence(nextSentence));
+	}
+
+	IEnumerator TypingSentence(string sentence)
+	{
+		OnSentenceStartTyping?.Invoke();
+		string currentSentence = "";
+		OnNextSentenceReady?.Invoke(currentSentence);
+		foreach (char letter in sentence.ToCharArray())
+		{
+			yield return typingIntervalWait;
+			currentSentence += letter;
+			OnNextSentenceReady?.Invoke(currentSentence);
+		}
+		OnSentenceTyped?.Invoke();
 	}
 
 	void EndDialogue()
