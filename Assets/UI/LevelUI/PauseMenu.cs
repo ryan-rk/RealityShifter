@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
 	[SerializeField] GameObject pauseMenuUI;
 	Animator pauseMenuUIAnimator;
 	[SerializeField] float gameResumeDelay = 0.5f;
+	[SerializeField] float restartDelay = 0.5f;
 	[SerializeField] float returnToMainMenuDelay = 0f;
 
 	// Start is called before the first frame update
@@ -49,9 +50,31 @@ public class PauseMenu : MonoBehaviour
 	IEnumerator DelayResumingGame()
 	{
 		yield return new WaitForSecondsRealtime(gameResumeDelay);
-		isPaused = false;
 		pauseMenuUI.SetActive(false);
+		isPaused = false;
 		Time.timeScale = 1f;
+	}
+
+	public void RestartLevel()
+	{
+		pauseMenuUIAnimator.Play("Close");
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+		}
+		Time.timeScale = 1f;
+		StartCoroutine(DelayRestart());
+	}
+
+	IEnumerator DelayRestart()
+	{
+		yield return new WaitForSecondsRealtime(restartDelay);
+		pauseMenuUI.SetActive(false);
+		isPaused = false;
+		if (LevelLoader.Instance != null)
+		{
+			LevelLoader.Instance.RestartLevel();
+		}
 	}
 
 	public void ReturnToMainMenu()

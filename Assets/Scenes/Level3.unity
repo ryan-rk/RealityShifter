@@ -8005,7 +8005,7 @@ PrefabInstance:
 
 
         <sprite index=14>  when <sprite
-        index=15> overlapping with <color="blue">Reality Objects</color> is <color="red">deadly
+        index=15> trapped within <color="blue">Reality Objects</color> is <color="red">deadly
         !!'
       objectReference: {fileID: 0}
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
@@ -8118,7 +8118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040591470348271545, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

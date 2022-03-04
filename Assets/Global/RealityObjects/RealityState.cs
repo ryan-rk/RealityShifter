@@ -25,7 +25,7 @@ public class RealityState : MonoBehaviour
 	ParticleSystem realityParticle;
 	int realLayerIndex = 7;
 	int notRealLayerIndex = 8;
-	public event Action OnStateUpdated;
+	public event Action<bool> OnStateUpdated;
 
 	private void Start()
 	{
@@ -102,7 +102,7 @@ public class RealityState : MonoBehaviour
 			{
 				groundBody.SetActive(isReal);
 			}
-			OnStateUpdated?.Invoke();
+			OnStateUpdated?.Invoke(isReal);
 		}
 		else
 		{

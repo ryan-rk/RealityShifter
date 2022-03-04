@@ -10216,7 +10216,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  boxCastOffset: {x: 0, y: -0.25, z: 0}
+  boxCastOffset: {x: 0, y: -0.22, z: 0}
   boxCastSize: {x: 0.68, y: 0.25, z: 0}
   boxCastDistance: 0.4
   isDrawLines: 1
@@ -10293,7 +10293,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -621062499, guid: 90959b58a2e3a49ea8dde1d9adb1945f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -48,10 +48,6 @@ public class LevelLoader : MonoBehaviour
 
 	public void RestartLevel()
 	{
-		if (AudioManager.Instance != null)
-		{
-			AudioManager.Instance.PlaySound("Click");
-		}
 		Action reloadSceneAction = () => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		SceneTransition.Instance.TransitionOutOfScene(restartLevelDelay, reloadSceneAction);
 	}
