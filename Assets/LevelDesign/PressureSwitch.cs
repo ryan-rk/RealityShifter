@@ -5,8 +5,15 @@ using UnityEngine;
 public class PressureSwitch : MonoBehaviour
 {
 	[SerializeField] Triggerable controlledTriggerable;
+	[SerializeField] GameObject switchSprites;
+	float pressedPositionY = 0.15f;
+	float releasedPositionY = 0.35f;
+	float switchMoveSpeed = 1f;
 	[SerializeField] SpriteRenderer switchOnSprite;
 	[SerializeField] SpriteRenderer switchOffSprite;
+	[SerializeField] SpriteRenderer baseSprite;
+	int triggerCount = 0;
+
 	[SerializeField] LineRenderer controlLine;
 	[SerializeField] bool isInvertLineDirection;
 	[SerializeField] Gradient lineActiveColor;
@@ -20,6 +27,8 @@ public class PressureSwitch : MonoBehaviour
 	int realLayerIndex = 7;
 	int notRealLayerIndex = 8;
 
+	[SerializeField] List<string> excludedPressureDetectionTag;
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -29,7 +38,6 @@ public class PressureSwitch : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
 	}
 
 	private void OnEnable()
@@ -54,6 +62,7 @@ public class PressureSwitch : MonoBehaviour
 		spriteColor.a = isReal ? realAlpha : notRealAlpha;
 		switchOnSprite.color = spriteColor;
 		switchOffSprite.color = spriteColor;
+		baseSprite.color = spriteColor;
 		if (groundBody != null)
 		{
 			groundBody.SetActive(isReal);
@@ -64,31 +73,73 @@ public class PressureSwitch : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		controlledTriggerable.Trigger();
-		SetTriggeredChanges(true);
+		// if (excludedPressureDetectionTag.Contains(other.gameObject.tag) || gameObject.layer == notRealLayerIndex)
+		if (excludedPressureDetectionTag.Contains(other.gameObject.tag) || other.attachedRigidbody.bodyType != RigidbodyType2D.Dynamic)
+		{
+			return;
+		}
+		triggerCount += 1;
+		if (triggerCount == 1)
+		{
+			SetSwitchPressed(true);
+		}
 	}
 
-	private void OnTriggerStay2D(Collider2D other)
-	{
-		controlledTriggerable.Trigger();
-		SetTriggeredChanges(true);
-	}
+	// private void OnTriggerStay2D(Collider2D other)
+	// {
+	// 	controlledTriggerable.Trigger();
+	// 	SetSwitchPressed(true);
+	// }
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		controlledTriggerable.StopTrigger();
-		SetTriggeredChanges(false);
+		// if (excludedPressureDetectionTag.Contains(other.gameObject.tag) || gameObject.layer == notRealLayerIndex)
+		if (excludedPressureDetectionTag.Contains(other.gameObject.tag) || other.attachedRigidbody.bodyType != RigidbodyType2D.Dynamic)
+		{
+			return;
+		}
+		triggerCount -= 1;
+		if (triggerCount <= 0)
+		{
+			SetSwitchPressed(false);
+		}
 	}
 
-	void SetTriggeredChanges(bool isOn)
+	void SetSwitchPressed(bool isOn)
 	{
-		switchOnSprite.gameObject.SetActive(isOn);
-		switchOffSprite.gameObject.SetActive(!isOn);
-		controlLine.colorGradient = isOn ? lineActiveColor : lineInactiveColor;
+		StartCoroutine(SwitchPressedProcess(isOn));
+	}
+
+	IEnumerator SwitchPressedProcess(bool isPressed)
+	{
+		if (!isPressed)
+		{
+			switchOnSprite.gameObject.SetActive(false);
+			switchOffSprite.gameObject.SetActive(true);
+			controlLine.colorGradient = lineInactiveColor;
+			controlledTriggerable?.StopTrigger();
+		}
+		while (switchSprites.transform.localPosition.y != (isPressed ? pressedPositionY : releasedPositionY))
+		{
+			float newPositionY = Mathf.MoveTowards(switchSprites.transform.localPosition.y, isPressed ? pressedPositionY : releasedPositionY, switchMoveSpeed * Time.deltaTime);
+			switchSprites.transform.localPosition = new Vector2(switchSprites.transform.localPosition.x, newPositionY);
+			yield return null;
+		}
+		if (isPressed)
+		{
+			switchOnSprite.gameObject.SetActive(true);
+			switchOffSprite.gameObject.SetActive(false);
+			controlLine.colorGradient = lineActiveColor;
+			controlledTriggerable?.Trigger();
+		}
 	}
 
 	void ConfigureControlLine()
 	{
+		if (controlledTriggerable == null)
+		{
+			return;
+		}
 		if (controlledTriggerable.GetControlLineAttachPoint().x == transform.position.x || controlledTriggerable.GetControlLineAttachPoint().y == transform.position.y)
 		{
 			controlLine.positionCount = 2;

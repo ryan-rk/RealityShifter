@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goal
   - LevelUI
+  - Effects
   layers:
   - Default
   - TransparentFX

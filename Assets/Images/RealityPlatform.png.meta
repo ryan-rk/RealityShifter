@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 86a2b422466184cc483208305f4bef9c
+guid: a98314deed131459797d95db63dfaafb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -118,96 +118,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Moveable_0
+      name: RealityPlatform_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 80
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b8999c130f6e4bee99000203f17215c
-      internalID: 2061161158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Moveable_2
-      rect:
-        serializedVersion: 2
-        x: 93
-        y: 48
-        width: 38
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67b5f49ae80af41fdb0077eb1a2a6030
-      internalID: -174966648
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Moveable_3
-      rect:
-        serializedVersion: 2
-        x: 93
-        y: 32
-        width: 38
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 494463448f57e4432ab8e8684062b017
-      internalID: -225519086
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Moveable_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 80
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 873379a1237cc487b98cf99d181998bd
-      internalID: -1873291164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Moveable_4
-      rect:
-        serializedVersion: 2
-        x: 88
         y: 16
-        width: 48
+        width: 256
         height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -216,8 +132,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ab0aa21c56254f0a8cd06e2589bf7ae
-      internalID: -1979124271
+      spriteID: a7724178982f043f3ad0cfb407171e56
+      internalID: 231429596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RealityPlatform_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c48da2837224b1998465f02bbd7078
+      internalID: -861915436
       vertices: []
       indices: 
       edges: []
@@ -233,11 +170,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Moveable_1: -1873291164
-      Moveable_0: 2061161158
-      Moveable_3: -225519086
-      Moveable_4: -1979124271
-      Moveable_2: -174966648
+      RealityPlatform_1: -861915436
+      RealityPlatform_0: 231429596
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

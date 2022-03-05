@@ -5205,6 +5205,7 @@ MonoBehaviour:
   player: {fileID: 7599565753546303315}
   excludedTrappedTag:
   - Goal
+  - NotRealityTrap
 --- !u!1 &7599565753079012217
 GameObject:
   m_ObjectHideFlags: 0
