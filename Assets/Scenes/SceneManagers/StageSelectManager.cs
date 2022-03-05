@@ -40,7 +40,7 @@ public class StageSelectManager : MonoBehaviour
 		{
 			AudioManager.Instance.PlaySound("Start");
 			AudioManager.Instance.StopSound("StartMenu", true);
-			if (stageNum >= 1 && stageNum <= 8)
+			if (stageNum >= 1 && stageNum <= 12)
 			{
 				AudioManager.Instance.PlaySound("LevelBGM", 0);
 			}

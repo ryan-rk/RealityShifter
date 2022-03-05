@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2552440619681029393}
   - component: {fileID: 2552440619681029392}
   - component: {fileID: 2552440619681029399}
-  m_Layer: 7
-  m_Name: PushedEyeBlock
+  m_Layer: 0
+  m_Name: PushedBlock_Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 2552440619816108964}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2552440619681029393
 SpriteRenderer:
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1720375413, guid: 46502c4779083455f817df78cbdfd1c1, type: 3}
+  m_Sprite: {fileID: -1660945010, guid: 46502c4779083455f817df78cbdfd1c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

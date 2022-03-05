@@ -11,7 +11,6 @@ public class PressureSwitch : MonoBehaviour
 	float switchMoveSpeed = 1f;
 	[SerializeField] SpriteRenderer switchOnSprite;
 	[SerializeField] SpriteRenderer switchOffSprite;
-	[SerializeField] SpriteRenderer baseSprite;
 	int triggerCount = 0;
 
 	[SerializeField] LineRenderer controlLine;
@@ -20,10 +19,11 @@ public class PressureSwitch : MonoBehaviour
 	[SerializeField] Gradient lineInactiveColor;
 
 	[SerializeField] RealityState attachedRealityObject;
-	[SerializeField] float realAlpha = 1f;
-	[SerializeField] float notRealAlpha = 0.7f;
+	float realAlpha = 1f;
+	float notRealAlpha = 0.5f;
 	[SerializeField] GameObject groundBody;
 	[SerializeField] GameObject switchBody;
+	SpriteRenderer baseSprite;
 	int realLayerIndex = 7;
 	int notRealLayerIndex = 8;
 
@@ -42,6 +42,10 @@ public class PressureSwitch : MonoBehaviour
 
 	private void OnEnable()
 	{
+		if (switchBody != null)
+		{
+			baseSprite = switchBody.GetComponent<SpriteRenderer>();
+		}
 		if (attachedRealityObject != null)
 		{
 			attachedRealityObject.OnStateUpdated += UpdateRealityState;
@@ -62,7 +66,10 @@ public class PressureSwitch : MonoBehaviour
 		spriteColor.a = isReal ? realAlpha : notRealAlpha;
 		switchOnSprite.color = spriteColor;
 		switchOffSprite.color = spriteColor;
-		baseSprite.color = spriteColor;
+		if (baseSprite != null)
+		{
+			baseSprite.color = spriteColor;
+		}
 		if (groundBody != null)
 		{
 			groundBody.SetActive(isReal);

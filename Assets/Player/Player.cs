@@ -11,9 +11,11 @@ public class Player : MonoBehaviour
 	[SerializeField] float coyoteTime = 0.1f;
 	float remainingCoyote = 0;
 	public float horizontalMovement = 0f;
+	[SerializeField] ParticleSystem movementParticle;
 
 	[SerializeField] GameObject playerSprite;
 	Animator spriteAnimator;
+	[SerializeField] NotRealDetector notRealDetector;
 	[SerializeField] float deathShrinkSpeed = 0.1f;
 	[SerializeField] ParticleSystem deathParticle;
 	[SerializeField] float deathShakeIntensity = 10f;
@@ -34,6 +36,11 @@ public class Player : MonoBehaviour
 	public event Action OnPlayerDeath;
 	public event Action OnPlayerWin;
 
+	private void OnEnable()
+	{
+		notRealDetector.OnTrappedShifting += SetDeath;
+	}
+
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -42,7 +49,6 @@ public class Player : MonoBehaviour
 		groundCheck = GetComponent<GroundCheck>();
 
 		spriteAnimator = playerSprite.GetComponent<Animator>();
-
 	}
 
 	// Update is called once per frame
@@ -55,6 +61,15 @@ public class Player : MonoBehaviour
 		else if (rb.velocity.x < -0.01)
 		{
 			FlipSprite(false);
+		}
+
+		if (groundCheck.isGrounded && Mathf.Abs(horizontalMovement) > 0)
+		{
+			SetMovementParticle(true);
+		}
+		else
+		{
+			SetMovementParticle(false);
 		}
 
 
@@ -108,6 +123,28 @@ public class Player : MonoBehaviour
 		float xScaling = Mathf.Abs(playerSprite.transform.localScale.x) * (isFacingRight ? 1 : -1);
 		playerSprite.transform.localScale = new Vector2(xScaling, playerSprite.transform.localScale.y);
 	}
+
+	public void SetMovementParticle(bool isEnabled)
+	{
+		if (movementParticle != null)
+		{
+			if (isEnabled)
+			{
+				if (!movementParticle.isEmitting)
+				{
+					movementParticle.Play();
+				}
+			}
+			else
+			{
+				if (movementParticle.isPlaying)
+				{
+					movementParticle.Stop();
+				}
+			}
+		}
+	}
+
 
 	private void FixedUpdate()
 	{
@@ -170,6 +207,11 @@ public class Player : MonoBehaviour
 		spriteAnimator.Play("Win");
 		winParticle.Play();
 		OnPlayerWin?.Invoke();
+	}
+
+	private void OnDisable()
+	{
+		notRealDetector.OnTrappedShifting -= SetDeath;
 	}
 
 }

@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NotRealDetector : MonoBehaviour
 {
-	[SerializeField] Player player;
 	public bool isOnNotReal { get; private set; } = false;
 	[SerializeField] List<string> excludedTrappedTag;
+	public event Action OnTrappedShifting;
 
 	// Start is called before the first frame update
 	void Start()
@@ -26,7 +27,8 @@ public class NotRealDetector : MonoBehaviour
 	{
 		if (isOnNotReal)
 		{
-			player.SetDeath();
+			// player.SetDeath();
+			OnTrappedShifting?.Invoke();
 		}
 	}
 

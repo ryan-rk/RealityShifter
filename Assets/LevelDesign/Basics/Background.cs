@@ -15,10 +15,10 @@ public class Background : MonoBehaviour
 	void Start()
 	{
 		RandomizeBgImagePosition();
-		UpdateBackgroundColor();
+		UpdateBackgroundReality();
 		if (RealityManager.Instance != null)
 		{
-			RealityManager.Instance.OnRealityShifted += UpdateBackgroundColor;
+			RealityManager.Instance.OnRealityShifted += UpdateBackgroundReality;
 		}
 	}
 
@@ -28,11 +28,14 @@ public class Background : MonoBehaviour
 
 	}
 
-	void UpdateBackgroundColor()
+	void UpdateBackgroundReality()
 	{
 		if (RealityManager.Instance != null)
 		{
-			bgColorSprite.color = RealityManager.Instance.currentPlaneIsReal ? realColor : notRealColor;
+			bool isReal = RealityManager.Instance.currentPlaneIsReal;
+			bgColorSprite.color = isReal ? realColor : notRealColor;
+			float yScaling = Mathf.Abs(bgImage.transform.localScale.y) * (isReal ? 1 : -1);
+			bgImage.transform.localScale = new Vector2(bgImage.transform.localScale.x, yScaling);
 		}
 	}
 

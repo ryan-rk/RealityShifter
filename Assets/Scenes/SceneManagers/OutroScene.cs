@@ -111,6 +111,15 @@ public class OutroScene : MonoBehaviour
 		LevelLoader.Instance.NextLevel();
 	}
 
+	public void SkipOutroScene()
+	{
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.StopSound("Intro", true);
+		}
+		LevelLoader.Instance.NextLevel();
+	}
+
 	// Update is called once per frame
 	void Update()
 	{

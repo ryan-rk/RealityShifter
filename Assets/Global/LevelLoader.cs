@@ -88,7 +88,7 @@ public class LevelLoader : MonoBehaviour
 		{
 			Gizmos.color = Color.cyan;
 			Gizmos.DrawIcon(playerSpawnPoint, "Record Off", true);
-			UnityEditor.EditorGUIUtility.IconContent("Record Off");
+			// UnityEditor.EditorGUIUtility.IconContent("Record Off");
 		}
 	}
 }

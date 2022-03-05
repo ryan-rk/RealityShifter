@@ -2069,12 +2069,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_text
-      value: ' <sprite index=14> can be performed infinitely on ground, but only
-        once in air.
-
-
-
-        Empty pits are also deadly.'
+      value: Empty pits are deadly.
       objectReference: {fileID: 0}
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_fontSize
@@ -2106,7 +2101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040591469407824384, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2040591469622241976, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_Name
@@ -2158,7 +2153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040591469654201133, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2040591470348271545, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_IsActive
@@ -2166,11 +2161,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040591470348271549, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.29
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 2040591470348271549, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.32
+      value: 0.96
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
