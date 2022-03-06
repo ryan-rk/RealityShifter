@@ -8651,30 +8651,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2739325956874343860, guid: 9ee66b1b4e0c54ab0a3bcc4a0545bc63, type: 3}
-      propertyPath: sounds.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739325956874343860, guid: 9ee66b1b4e0c54ab0a3bcc4a0545bc63, type: 3}
-      propertyPath: sounds.Array.data[14].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e0dbd92fdacfd48a383d34d6e6aaf155, type: 3}
-    - target: {fileID: 2739325956874343860, guid: 9ee66b1b4e0c54ab0a3bcc4a0545bc63, type: 3}
-      propertyPath: sounds.Array.data[14].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739325956874343860, guid: 9ee66b1b4e0c54ab0a3bcc4a0545bc63, type: 3}
-      propertyPath: sounds.Array.data[14].volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739325956874343860, guid: 9ee66b1b4e0c54ab0a3bcc4a0545bc63, type: 3}
-      propertyPath: sounds.Array.data[14].soundName
-      value: Glitch
-      objectReference: {fileID: 0}
-    - target: {fileID: 2739325956874343860, guid: 9ee66b1b4e0c54ab0a3bcc4a0545bc63, type: 3}
-      propertyPath: sounds.Array.data[14].isSoundEffect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2739325956874343866, guid: 9ee66b1b4e0c54ab0a3bcc4a0545bc63, type: 3}
       propertyPath: m_Name
       value: AudioManager

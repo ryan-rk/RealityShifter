@@ -12,6 +12,10 @@ public class Spawnable : MonoBehaviour
 	void Start()
 	{
 		OnSpawned?.Invoke();
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Spawned");
+		}
 	}
 
 	// Update is called once per frame

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AutoSpawner : MonoBehaviour
 {
+	[SerializeField] float initialSpawnDelay = 1f;
 	[SerializeField] bool isAutoSpawnAfterDeath = true;
 	[SerializeField] float spawnDelayAfterDeath = 1f;
 	[SerializeField] Spawnable spawnTargetPrefab;
@@ -13,7 +14,7 @@ public class AutoSpawner : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		SpawnTarget();
+		StartCoroutine(SpawnDelay(initialSpawnDelay));
 	}
 
 	// Update is called once per frame
@@ -33,13 +34,13 @@ public class AutoSpawner : MonoBehaviour
 	{
 		if (isAutoSpawnAfterDeath)
 		{
-			StartCoroutine(DelayRespawn());
+			StartCoroutine(SpawnDelay(spawnDelayAfterDeath));
 		}
 	}
 
-	IEnumerator DelayRespawn()
+	IEnumerator SpawnDelay(float delay)
 	{
-		yield return new WaitForSeconds(spawnDelayAfterDeath);
+		yield return new WaitForSeconds(delay);
 		SpawnTarget();
 	}
 

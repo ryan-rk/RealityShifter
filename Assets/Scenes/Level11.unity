@@ -5305,7 +5305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2552440619681029395, guid: e3cd1bc3c28144f7e840a1d263b6540c, type: 3}
       propertyPath: m_Name
-      value: PushedEyeBlock
+      value: PushedBlockSpawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

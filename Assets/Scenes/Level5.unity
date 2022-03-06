@@ -9429,11 +9429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2552440619681029394, guid: e3cd1bc3c28144f7e840a1d263b6540c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.26
+      value: -12.53
       objectReference: {fileID: 0}
     - target: {fileID: 2552440619681029394, guid: e3cd1bc3c28144f7e840a1d263b6540c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.55
+      value: 6.13
       objectReference: {fileID: 0}
     - target: {fileID: 2552440619681029394, guid: e3cd1bc3c28144f7e840a1d263b6540c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9469,7 +9469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2552440619681029395, guid: e3cd1bc3c28144f7e840a1d263b6540c, type: 3}
       propertyPath: m_Name
-      value: PushedEyeBlock
+      value: PushedBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -14531,7 +14531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8736253049679989107, guid: 974e3081d1c07416b8fd565e257e06f4, type: 3}
       propertyPath: playerSpawnPoint.x
-      value: -9.67
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 8736253049679989107, guid: 974e3081d1c07416b8fd565e257e06f4, type: 3}
       propertyPath: playerSpawnPoint.y

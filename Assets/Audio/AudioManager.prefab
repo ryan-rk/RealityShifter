@@ -145,6 +145,27 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - soundName: Spawned
+    clip: {fileID: 8300000, guid: eef89c11e67cd44fca75131e8959b663, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: RockSmashed
+    clip: {fileID: 8300000, guid: aaf4abaf6fa2548cba1eb3162cfa91b2, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: Glitch
+    clip: {fileID: 8300000, guid: e0dbd92fdacfd48a383d34d6e6aaf155, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
   soundEffectContainer: {fileID: 2739325957898824883}
   bgmContainer: {fileID: 2739325957752286592}
   fadeInSpeed: 0.8
