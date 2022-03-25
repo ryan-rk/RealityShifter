@@ -318,7 +318,7 @@ Transform:
   - {fileID: 8622783833387797534}
   - {fileID: 5221209154146107871}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8622783833679357123
 SpriteRenderer:
@@ -327,7 +327,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8622783833679357126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -432,10 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sr: {fileID: 0}
-  realSR: {fileID: 0}
-  notRealSR: {fileID: 0}
   isInitialReal: 0
-  realAlpha: 1
-  notRealAlpha: 0.4
-  realityIndicatorPrefab: {fileID: 8325639344690648562, guid: cca9428aa7a734f159b0d5fd0700fe89, type: 3}
+  realMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  notRealMaterial: {fileID: 2100000, guid: 643387d09777549e79fc4011780ca186, type: 2}
   groundBody: {fileID: 8622783833387797532}

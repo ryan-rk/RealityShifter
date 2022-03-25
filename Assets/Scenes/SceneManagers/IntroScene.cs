@@ -53,7 +53,7 @@ public class IntroScene : MonoBehaviour
 	void MovePlayerToGoal()
 	{
 		Player player = GameObject.FindObjectOfType<Player>();
-		player.horizontalMovement = 1;
+		player.horizontalMovement.normalizedMovement = 1;
 		narratorDialogueUI.OnNoMoreDialogueBlock -= MovePlayerToGoal;
 		StartCoroutine(StopBGMAfterDelay());
 	}
@@ -65,6 +65,17 @@ public class IntroScene : MonoBehaviour
 		{
 			AudioManager.Instance.StopSound("Intro", true);
 		}
+	}
+
+	public void SkipIntroScene()
+	{
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Click");
+			// AudioManager.Instance.PlaySound("LevelBGM", 0);
+		}
+		StartCoroutine(StopBGMAfterDelay());
+		LevelLoader.Instance.NextLevel();
 	}
 
 	IEnumerator DelayIntroCutscene()

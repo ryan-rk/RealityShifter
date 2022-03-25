@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+	[SerializeField] ParticleSystem goalParticle;
 	RealityState realityState;
 	Animator animator;
 
@@ -20,10 +21,18 @@ public class Goal : MonoBehaviour
 		if (realityState.isReal)
 		{
 			animator.speed = 1f;
+			if (!goalParticle.isPlaying)
+			{
+				goalParticle.Play();
+			}
 		}
 		else
 		{
 			animator.speed = 0f;
+			if (goalParticle.isPlaying)
+			{
+				goalParticle.Pause();
+			}
 		}
 	}
 

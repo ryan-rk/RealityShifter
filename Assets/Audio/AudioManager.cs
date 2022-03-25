@@ -102,6 +102,7 @@ public class AudioManager : MonoBehaviour
 			Debug.Log("Sound is already playing: " + targetSound.soundName);
 			return;
 		}
+		targetSound.source.volume = targetSound.volume;
 		targetSound.source.Play();
 	}
 

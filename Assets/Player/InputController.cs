@@ -16,24 +16,28 @@ public class InputController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		player.horizontalMovement = Input.GetAxisRaw("Horizontal");
+		player.horizontalMovement.normalizedMovement = Input.GetAxisRaw("Horizontal");
 		if (Input.GetButtonDown("Jump"))
 		{
-			player.Jump();
+			player.jumpController.Jump();
+			player.wallGrabber.WallJump();
 		}
 		else if (Input.GetButtonUp("Jump"))
 		{
-			player.StopJump();
+			player.jumpController.StopJump();
 		}
 		if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
 		{
-			RealityManager.Instance.ShiftRealityPlane();
+			if (RealityManager.Instance != null)
+			{
+				RealityManager.Instance.ShiftRealityPlane();
+			}
 		}
 	}
 
 	void StopInputReceiver()
 	{
-		player.horizontalMovement = 0;
+		player.horizontalMovement.normalizedMovement = 0;
 		this.enabled = false;
 	}
 

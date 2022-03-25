@@ -5,13 +5,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	[SerializeField] float moveSpeed = 8f;
-	[SerializeField] float jumpForce = 20f;
-	[SerializeField] float shortJumpVelocityScale = 0.5f;
-	[SerializeField] float coyoteTime = 0.1f;
-	float remainingCoyote = 0;
-	public float horizontalMovement = 0f;
-	[SerializeField] ParticleSystem movementParticle;
+	[HideInInspector] public HorizontalMovement horizontalMovement;
+	[HideInInspector] public JumpController jumpController;
+	[HideInInspector] public WallGrabber wallGrabber;
 
 	[SerializeField] GameObject playerSprite;
 	Animator spriteAnimator;
@@ -54,101 +50,19 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (rb.velocity.x > 0.01)
-		{
-			FlipSprite(true);
-		}
-		else if (rb.velocity.x < -0.01)
-		{
-			FlipSprite(false);
-		}
-
-		if (groundCheck.isGrounded && Mathf.Abs(horizontalMovement) > 0)
-		{
-			SetMovementParticle(true);
-		}
-		else
-		{
-			SetMovementParticle(false);
-		}
-
-
 		if (groundCheck.isGrounded)
 		{
-			// Coyote time management
-			remainingCoyote = coyoteTime;
-
 			// Reality Manage management
 			if (RealityManager.Instance != null)
 			{
 				RealityManager.Instance.RecoverShift();
 			}
 		}
-		else
-		{
-			remainingCoyote -= Time.deltaTime;
-		}
 	}
 
 	public void Spawn(Vector2 spawnPoint)
 	{
 		transform.position = spawnPoint;
-	}
-
-	public void Jump()
-	{
-		// if (groundCheck.isGrounded)
-		if (remainingCoyote > 0)
-		{
-			rb.velocity = new Vector2(rb.velocity.x, 0);
-			rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-			if (AudioManager.Instance != null)
-			{
-				AudioManager.Instance.PlaySound("Jump");
-			}
-		}
-	}
-
-	public void StopJump()
-	{
-		if (rb.velocity.y > 0)
-		{
-			rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * shortJumpVelocityScale);
-		}
-	}
-
-	public void FlipSprite(bool isFacingRight)
-	{
-		// flip body with parameter true if facing right, false if facing left
-		float xScaling = Mathf.Abs(playerSprite.transform.localScale.x) * (isFacingRight ? 1 : -1);
-		playerSprite.transform.localScale = new Vector2(xScaling, playerSprite.transform.localScale.y);
-	}
-
-	public void SetMovementParticle(bool isEnabled)
-	{
-		if (movementParticle != null)
-		{
-			if (isEnabled)
-			{
-				if (!movementParticle.isEmitting)
-				{
-					movementParticle.Play();
-				}
-			}
-			else
-			{
-				if (movementParticle.isPlaying)
-				{
-					movementParticle.Stop();
-				}
-			}
-		}
-	}
-
-
-	private void FixedUpdate()
-	{
-		rb.velocity = new Vector2(moveSpeed * horizontalMovement, rb.velocity.y);
 	}
 
 	public void SetDeath()
@@ -158,7 +72,7 @@ public class Player : MonoBehaviour
 			return;
 		}
 		currentState = PlayerState.Death;
-		horizontalMovement = 0;
+		horizontalMovement.normalizedMovement = 0;
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		col.enabled = false;
@@ -196,7 +110,7 @@ public class Player : MonoBehaviour
 			return;
 		}
 		currentState = PlayerState.Win;
-		horizontalMovement = 0;
+		horizontalMovement.normalizedMovement = 0;
 		rb.velocity = Vector2.zero;
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		if (AudioManager.Instance != null)

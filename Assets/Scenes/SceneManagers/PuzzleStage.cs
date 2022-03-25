@@ -9,7 +9,7 @@ public class PuzzleStage : MonoBehaviour
 	{
 		if (AudioManager.Instance != null)
 		{
-			AudioManager.Instance.PlaySound("LevelBGM");
+			AudioManager.Instance.PlaySound("LevelBGM", 0);
 		}
 	}
 

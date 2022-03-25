@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
 	public static bool isPaused = false;
 
 	[SerializeField] GameObject pauseMenuUI;
+	[SerializeField] TMP_Text levelTitle;
 	Animator pauseMenuUIAnimator;
 	[SerializeField] float gameResumeDelay = 0.5f;
 	[SerializeField] float restartDelay = 0.5f;
@@ -17,6 +19,14 @@ public class PauseMenu : MonoBehaviour
 	void Start()
 	{
 		pauseMenuUIAnimator = pauseMenuUI.GetComponent<Animator>();
+		SetLevelTitleText();
+	}
+
+	void SetLevelTitleText()
+	{
+		int levelNumber = SceneManager.GetActiveScene().buildIndex - 2;
+		string levelTitleString = "Level " + levelNumber;
+		levelTitle.text = levelTitleString;
 	}
 
 	// Update is called once per frame

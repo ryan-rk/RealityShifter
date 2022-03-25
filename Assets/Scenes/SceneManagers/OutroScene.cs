@@ -60,12 +60,12 @@ public class OutroScene : MonoBehaviour
 	{
 		Debug.Log("player entering scene");
 		this.player = player;
-		player.horizontalMovement = 1f;
+		player.horizontalMovement.normalizedMovement = 1f;
 	}
 
 	void PlayerExitingScene()
 	{
-		player.horizontalMovement = 1f;
+		player.horizontalMovement.normalizedMovement = 1f;
 		playerDialogueUI.OnDialogueUIEnd -= PlayerExitingScene;
 	}
 
@@ -115,6 +115,7 @@ public class OutroScene : MonoBehaviour
 	{
 		if (AudioManager.Instance != null)
 		{
+			AudioManager.Instance.PlaySound("Click");
 			AudioManager.Instance.StopSound("Intro", true);
 		}
 		LevelLoader.Instance.NextLevel();
@@ -134,7 +135,7 @@ public class OutroScene : MonoBehaviour
 			if (player.transform.position.x >= playerStopPoint && !hasPlayerReachedStopPoint)
 			{
 				hasPlayerReachedStopPoint = true;
-				player.horizontalMovement = 0f;
+				player.horizontalMovement.normalizedMovement = 0f;
 				canDialogueProceed = true;
 				playerDialogueUI.StartDialogueUI();
 			}
