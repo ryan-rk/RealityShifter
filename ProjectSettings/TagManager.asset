@@ -7,6 +7,8 @@ TagManager:
   - Goal
   - LevelUI
   - Effects
+  - Spike
+  - Pit
   layers:
   - Default
   - TransparentFX

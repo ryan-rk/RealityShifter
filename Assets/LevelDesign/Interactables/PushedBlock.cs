@@ -9,17 +9,20 @@ public class PushedBlock : MonoBehaviour
 	[SerializeField] float dynamicChangeDelay = 0.5f;
 	[SerializeField] Animator animator;
 	[SerializeField] NotRealDetector notRealDetector;
+	[SerializeField] HazardDetector hazardDetector;
 	[SerializeField] ParticleSystem destroyParticle;
 	[SerializeField] float destroyParticleDelay = 0.1f;
 
 	private void OnEnable()
 	{
 		notRealDetector.OnTrappedShifting += SetDestroy;
+		hazardDetector.OnHazardDetected += SetDestroy;
 	}
 
 	private void OnDisable()
 	{
 		notRealDetector.OnTrappedShifting -= SetDestroy;
+		hazardDetector.OnHazardDetected -= SetDestroy;
 	}
 
 	// Start is called before the first frame update

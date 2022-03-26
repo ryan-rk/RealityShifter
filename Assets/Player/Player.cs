@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 	[SerializeField] GameObject playerSprite;
 	Animator spriteAnimator;
 	[SerializeField] NotRealDetector notRealDetector;
+	[SerializeField] HazardDetector hazardDetector;
 	[SerializeField] float deathShrinkSpeed = 0.1f;
 	[SerializeField] ParticleSystem deathParticle;
 	[SerializeField] float deathShakeIntensity = 10f;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
 	private void OnEnable()
 	{
 		notRealDetector.OnTrappedShifting += SetDeath;
+		hazardDetector.OnHazardDetected += SetDeath;
 	}
 
 	// Start is called before the first frame update
@@ -126,6 +128,7 @@ public class Player : MonoBehaviour
 	private void OnDisable()
 	{
 		notRealDetector.OnTrappedShifting -= SetDeath;
+		hazardDetector.OnHazardDetected -= SetDeath;
 	}
 
 }
