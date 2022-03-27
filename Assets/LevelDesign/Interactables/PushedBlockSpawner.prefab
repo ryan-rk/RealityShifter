@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 7
   m_Name: PushedBlockSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8263293548922687518
 MonoBehaviour:
@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bf77bfa02b443ecb6ca94bb38f086b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialSpawnDelay: 1
   isAutoSpawnAfterDeath: 1
   spawnDelayAfterDeath: 1
   spawnTargetPrefab: {fileID: 586383962444678302, guid: e53eda2939c1b4eef9b480ebe544ddf0, type: 3}

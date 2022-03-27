@@ -6,6 +6,7 @@ public class PushedBlock : MonoBehaviour
 {
 	bool isDestroying = false;
 	Rigidbody2D rb;
+	Collider2D col;
 	[SerializeField] float dynamicChangeDelay = 0.5f;
 	[SerializeField] Animator animator;
 	[SerializeField] NotRealDetector notRealDetector;
@@ -29,6 +30,7 @@ public class PushedBlock : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		col = GetComponent<Collider2D>();
 		rb.bodyType = RigidbodyType2D.Kinematic;
 		StartCoroutine(DelaySetDynamic());
 	}
@@ -51,6 +53,8 @@ public class PushedBlock : MonoBehaviour
 		{
 			rb.bodyType = RigidbodyType2D.Kinematic;
 			rb.velocity = Vector2.zero;
+			col.enabled = false;
+			notRealDetector.gameObject.SetActive(false);
 			animator.Play("Destroy");
 			StartCoroutine(DelayDestroyParticle());
 			if (AudioManager.Instance != null)

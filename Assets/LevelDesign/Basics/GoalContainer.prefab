@@ -4868,7 +4868,6 @@ GameObject:
   - component: {fileID: 7310383740950030640}
   - component: {fileID: 7310383740950030643}
   - component: {fileID: 7310383740950030642}
-  - component: {fileID: 7310383740950030645}
   - component: {fileID: 7310383740950030644}
   m_Layer: 0
   m_Name: Goal
@@ -4935,7 +4934,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1127992268, guid: d7012ac22ad3d419fab83d691bf31504, type: 3}
-  m_Color: {r: 0.6462264, g: 1, b: 0.65220445, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5002,23 +5001,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7310383740950030645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7310383740950030653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dbdbbe24795846ab9d1505b4808867a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sr: {fileID: 7310383740950030652}
-  isInitialReal: 1
-  realMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  notRealMaterial: {fileID: 2100000, guid: 643387d09777549e79fc4011780ca186, type: 2}
-  groundBody: {fileID: 0}
 --- !u!114 &7310383740950030644
 MonoBehaviour:
   m_ObjectHideFlags: 0
