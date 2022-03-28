@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 	[HideInInspector] public HorizontalMovement horizontalMovement;
+	[HideInInspector] public GroundCheck groundCheck;
 	[HideInInspector] public JumpController jumpController;
 	[HideInInspector] public WallGrabber wallGrabber;
 
@@ -22,7 +23,6 @@ public class Player : MonoBehaviour
 
 	Rigidbody2D rb;
 	Collider2D col;
-	[HideInInspector] public GroundCheck groundCheck { get; private set; }
 
 	enum PlayerState
 	{
@@ -44,7 +44,6 @@ public class Player : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		col = GetComponent<Collider2D>();
-		groundCheck = GetComponent<GroundCheck>();
 
 		spriteAnimator = playerSprite.GetComponent<Animator>();
 	}

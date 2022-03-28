@@ -15,8 +15,9 @@ public class HorizontalMovement : MonoBehaviour
 
 	Rigidbody2D rb;
 	GroundCheck groundCheck;
-	public float speedControllability = 1f; // 1 for full control from movement script, 0 for fully no control
-											// public bool isControllingVelocity = false;
+	// 1 for full control from movement script, 0 for fully no control
+	public float speedControllability = 1f;
+	// public bool isControllingVelocity = false;
 	public bool isFacingRight { get; private set; } = true;
 
 	private void Awake()
@@ -32,11 +33,11 @@ public class HorizontalMovement : MonoBehaviour
 
 	private void Update()
 	{
-		if (rb.velocity.x > 0.01)
+		if (rb.velocity.x > 0.1)
 		{
 			FlipPlayer(true);
 		}
-		else if (rb.velocity.x < -0.01)
+		else if (rb.velocity.x < -0.1)
 		{
 			FlipPlayer(false);
 		}
@@ -45,7 +46,7 @@ public class HorizontalMovement : MonoBehaviour
 		{
 			// if (groundCheck.isGrounded)
 			// {
-			if (Mathf.Abs(normalizedMovement) > 0 && Mathf.Abs(rb.velocity.x) > 0.01f)
+			if (Mathf.Abs(normalizedMovement) > 0 && Mathf.Abs(rb.velocity.x) > 0.1f)
 			{
 				SetMovementParticle(true);
 			}
@@ -112,5 +113,27 @@ public class HorizontalMovement : MonoBehaviour
 		SetMovementParticle(false);
 		rb.velocity = new Vector2(0, rb.velocity.y);
 	}
+
+
+	// [SerializeField] float acceleration = 12f;
+	// [SerializeField] float deceleration = 15f;
+	// [SerializeField] float velocityChangePower = 0.95f;
+	// [SerializeField] float movementFriction = 0.2f;
+
+	// private void FixedUpdate()
+	// {
+	// 	float targetSpeed = moveSpeed * normalizedMovement;
+	// 	float currentSpeedDiff = targetSpeed - rb.velocity.x;
+	// 	float velocityChangeRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
+	// 	float movementForce = Mathf.Pow(Mathf.Abs(currentSpeedDiff) * velocityChangeRate, velocityChangePower) * Mathf.Sign(currentSpeedDiff);
+	// 	rb.AddForce(movementForce * Vector2.right);
+
+
+	// 	if (player.groundCheck.isGrounded && Mathf.Abs(normalizedMovement) < 0.01f)
+	// 	{
+	// 		float frictionForce = Mathf.Sign(rb.velocity.x) * Mathf.Min(Mathf.Abs(rb.velocity.x), Mathf.Abs(movementFriction));
+	// 		rb.AddForce(-frictionForce * Vector2.right, ForceMode2D.Impulse);
+	// 	}
+	// }
 
 }

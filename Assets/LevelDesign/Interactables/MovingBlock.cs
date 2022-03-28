@@ -7,16 +7,24 @@ public class MovingBlock : MonoBehaviour
 {
 	[SerializeField] SpriteRenderer activeSprite;
 	[SerializeField] SpriteRenderer inActiveSprite;
-	[SerializeField] float activatedVelocity = 1f;
-	[SerializeField] float returnVelocity = 1f;
-	[SerializeField] Vector2 activatedMovementOffset;
+	[SerializeField] float moveSpeed = 2f;
+	// [SerializeField] float activatedVelocity = 1f;
+	// [SerializeField] float returnVelocity = 1f;
+	[SerializeField] Vector2 endPositionOffset;
 	[SerializeField] LayerMask boxCastLayerMask;
+	[SerializeField] LineRenderer railLine;
+	[SerializeField] Gradient railLineActiveColor;
+	[SerializeField] Gradient railLineInactiveColor;
+	[SerializeField] GameObject railLineStartPoint;
+	[SerializeField] GameObject railLineEndPoint;
+	[SerializeField] PlayerFeetAttacher playerFeetAttacher;
 
 	Rigidbody2D rb;
 	BoxCollider2D boxCol;
 	Triggerable triggerable;
-	Vector2 nonActivatedPosition;
+	Vector2 startPosition;
 	RaycastHit2D boxCastHit;
+	bool isMoveForward = true;
 
 	// Start is called before the first frame update
 	void Start()
@@ -24,27 +32,32 @@ public class MovingBlock : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		boxCol = GetComponent<BoxCollider2D>();
 		triggerable = GetComponent<Triggerable>();
-		nonActivatedPosition = transform.position;
+		startPosition = transform.position;
 		SetSprite(triggerable.isTriggering);
+		ConfigureRailLine();
 	}
 
+	// private void Update()
 	void FixedUpdate()
 	{
 		if (triggerable.isTriggering)
 		{
 			SetSprite(true);
-			if ((Vector2)transform.position != activatedMovementOffset + nonActivatedPosition)
-			{
-				MoveBlock(true);
-			}
+			railLine.colorGradient = railLineActiveColor;
+			MoveBlock();
+			// if ((Vector2)transform.position != endPositionOffset + startPosition)
+			// {
+			// MoveBlock(true);
+			// }
 		}
-		else if (!triggerable.isTriggering)
+		else
 		{
 			SetSprite(false);
-			if ((Vector2)transform.position != nonActivatedPosition)
-			{
-				MoveBlock(false);
-			}
+			railLine.colorGradient = railLineInactiveColor;
+			// if ((Vector2)transform.position != startPosition)
+			// {
+			// MoveBlock(false);
+			// }
 		}
 	}
 
@@ -54,19 +67,44 @@ public class MovingBlock : MonoBehaviour
 		inActiveSprite.gameObject.SetActive(!isActive);
 	}
 
-	void MoveBlock(bool isTriggered)
+	void MoveBlock()
 	{
-		Vector2 newPos = Vector2.MoveTowards(transform.position, isTriggered ? activatedMovementOffset + nonActivatedPosition : nonActivatedPosition, Time.deltaTime * (isTriggered ? activatedVelocity : returnVelocity));
+		Vector2 targetPosition = isMoveForward ? startPosition + endPositionOffset : startPosition;
+		if ((Vector2)transform.position != targetPosition)
+		{
+			MoveBlockTowards(targetPosition);
+		}
+		else
+		{
+			isMoveForward = !isMoveForward;
+		}
+		// Vector2 newPos = Vector2.MoveTowards(transform.position, isTriggered ? activatedMovementOffset + nonActivatedPosition : nonActivatedPosition, Time.deltaTime * (isTriggered ? activatedVelocity : returnVelocity));
+	}
+
+	void MoveBlockTowards(Vector2 destination)
+	{
+		Vector2 newPos = Vector2.MoveTowards(transform.position, destination, Time.deltaTime * moveSpeed);
 		Vector2 moveDirection = newPos - (Vector2)transform.position;
 		boxCastHit = Physics2D.BoxCast(transform.position, boxCol.size, 0, moveDirection, moveDirection.magnitude, boxCastLayerMask);
 		if (!boxCastHit)
 		{
+			playerFeetAttacher.MoveOverlapObjects(moveDirection);
 			rb.MovePosition(newPos);
+			// transform.position = newPos;
 		}
 		else
 		{
-			Debug.Log("box cast hit");
+			// Debug.Log("Cast: " + boxCol.size + " direction: " + moveDirection + " magnitude: " + moveDirection.magnitude);
+			// Debug.Log("box cast hit: " + gameObject.transform.parent.transform.parent + " with " + boxCastHit.collider.gameObject.transform.parent.transform.parent + " at point: " + boxCastHit.point);
 		}
+	}
+
+	void ConfigureRailLine()
+	{
+		railLine.SetPosition(0, startPosition);
+		railLine.SetPosition(1, startPosition + endPositionOffset);
+		railLineStartPoint.transform.position = startPosition;
+		railLineEndPoint.transform.position = startPosition + endPositionOffset;
 	}
 
 }

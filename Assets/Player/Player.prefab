@@ -15014,6 +15014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalMovement: {fileID: 1677191357606723269}
+  groundCheck: {fileID: 0}
   jumpController: {fileID: 3097998338720273171}
   wallGrabber: {fileID: 0}
   playerSprite: {fileID: 7599565753642391092}
@@ -15049,6 +15050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e973db286ed624761bc23ada001e237c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 7599565753546303315}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -15075,6 +15077,10 @@ MonoBehaviour:
   flipContainer: {fileID: 6657074960274588378}
   movementParticle: {fileID: 5843662109582413681}
   speedControllability: 1
+  acceleration: 12
+  deceleration: 15
+  velocityChangePower: 0.95
+  movementFriction: 0.2
 --- !u!114 &3097998338720273171
 MonoBehaviour:
   m_ObjectHideFlags: 0

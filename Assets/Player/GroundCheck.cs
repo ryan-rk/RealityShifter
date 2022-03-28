@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
+	[SerializeField] Player player;
 	public bool isGrounded { get; private set; } = false;
 	[SerializeField] LayerMask groundLayer;
 	[SerializeField] Vector3 boxCastOffset = Vector3.zero;
@@ -13,6 +14,11 @@ public class GroundCheck : MonoBehaviour
 
 	bool prevFrameIsGrounded = false;
 	public event Action OnLandedGround;
+
+	private void Awake()
+	{
+		player.groundCheck = this;
+	}
 
 	// Update is called once per frame
 	void Update()
