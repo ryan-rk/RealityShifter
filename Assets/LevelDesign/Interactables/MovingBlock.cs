@@ -8,6 +8,7 @@ public class MovingBlock : MonoBehaviour
 	[SerializeField] SpriteRenderer activeSprite;
 	[SerializeField] SpriteRenderer inActiveSprite;
 	[SerializeField] float moveSpeed = 2f;
+	[SerializeField] float initialOffset;
 	// [SerializeField] float activatedVelocity = 1f;
 	// [SerializeField] float returnVelocity = 1f;
 	[SerializeField] Vector2 endPositionOffset;
@@ -25,6 +26,7 @@ public class MovingBlock : MonoBehaviour
 	Vector2 startPosition;
 	RaycastHit2D boxCastHit;
 	bool isMoveForward = true;
+	// bool hasFirstFixedUpdate = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -35,6 +37,12 @@ public class MovingBlock : MonoBehaviour
 		startPosition = transform.position;
 		SetSprite(triggerable.isTriggering);
 		ConfigureRailLine();
+		if (initialOffset > 1)
+		{
+			initialOffset = 2 - initialOffset;
+			isMoveForward = false;
+		}
+		transform.position = (Vector2)transform.position + initialOffset * endPositionOffset;
 	}
 
 	// private void Update()
@@ -59,6 +67,10 @@ public class MovingBlock : MonoBehaviour
 			// MoveBlock(false);
 			// }
 		}
+		// if (!hasFirstFixedUpdate)
+		// {
+		// 	hasFirstFixedUpdate = true;
+		// }
 	}
 
 	void SetSprite(bool isActive)

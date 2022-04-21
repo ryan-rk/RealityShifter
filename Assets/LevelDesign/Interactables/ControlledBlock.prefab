@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 7969e0d0d8ae54ac4a84d06d0b63d2eb, type: 3}
   m_Color: {r: 0.31759524, g: 0.50025773, b: 0.5754717, a: 1}
   m_FlipX: 0
@@ -116,7 +116,7 @@ Transform:
   - {fileID: 4085881761217186213}
   - {fileID: 122777407897963315}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4085881761049899272
 GameObject:
@@ -219,6 +219,7 @@ MonoBehaviour:
   activeSprite: {fileID: 2216711274963916591}
   inActiveSprite: {fileID: 8643539672410015091}
   moveSpeed: 1.5
+  initialOffset: 0
   endPositionOffset: {x: 5, y: 0}
   boxCastLayerMask:
     serializedVersion: 2
@@ -827,7 +828,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 7969e0d0d8ae54ac4a84d06d0b63d2eb, type: 3}
   m_Color: {r: 0.31759524, g: 0.50025773, b: 0.5754717, a: 1}
   m_FlipX: 0

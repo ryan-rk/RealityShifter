@@ -12,6 +12,10 @@ public class RealityGenerator : MonoBehaviour
 	[SerializeField] Gradient lineActiveColor;
 	[SerializeField] Gradient lineInactiveColor;
 	[SerializeField] ParticleSystem electricSpark;
+	[SerializeField] Color activeSparkColor;
+	[SerializeField] Color inactiveSparkColor;
+
+	ParticleSystem.TrailModule sparkTrail;
 
 	// Start is called before the first frame update
 	void Start()
@@ -21,6 +25,7 @@ public class RealityGenerator : MonoBehaviour
 
 	private void OnEnable()
 	{
+		sparkTrail = electricSpark.trails;
 		realityState.OnStateUpdated += SetGeneratorState;
 	}
 
@@ -38,6 +43,7 @@ public class RealityGenerator : MonoBehaviour
 			if (electricSpark.isPaused)
 			{
 				electricSpark.Play();
+				sparkTrail.colorOverLifetime = activeSparkColor;
 			}
 		}
 		else
@@ -47,6 +53,7 @@ public class RealityGenerator : MonoBehaviour
 			if (electricSpark.isPlaying)
 			{
 				electricSpark.Pause();
+				sparkTrail.colorOverLifetime = inactiveSparkColor;
 			}
 		}
 	}

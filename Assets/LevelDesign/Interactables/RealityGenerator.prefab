@@ -4937,7 +4937,7 @@ Transform:
   - {fileID: 4325388142599444301}
   - {fileID: 4325388143056857135}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4325388142156405525
 SpriteRenderer:
@@ -5114,6 +5114,9 @@ MonoBehaviour:
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
   electricSpark: {fileID: 4325388141838674706}
+  activeSparkColor: {r: 0.98926055, g: 1, b: 0.6462264, a: 1}
+  inactiveSparkColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.6392157}
+  spritedefault: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &4325388142156405526
 MonoBehaviour:
   m_ObjectHideFlags: 0

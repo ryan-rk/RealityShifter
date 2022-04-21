@@ -1416,11 +1416,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8736253049679989107, guid: 974e3081d1c07416b8fd565e257e06f4, type: 3}
       propertyPath: playerSpawnPoint.x
-      value: 14.61
+      value: 12.2
       objectReference: {fileID: 0}
     - target: {fileID: 8736253049679989107, guid: 974e3081d1c07416b8fd565e257e06f4, type: 3}
       propertyPath: playerSpawnPoint.y
-      value: 5.66
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: 8736253049983291422, guid: 974e3081d1c07416b8fd565e257e06f4, type: 3}
       propertyPath: cTransition
