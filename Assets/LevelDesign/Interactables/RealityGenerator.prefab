@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4325388141359636821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4325388142599444301}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1127992268, guid: d7012ac22ad3d419fab83d691bf31504, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5803922}
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5116,7 +5116,6 @@ MonoBehaviour:
   electricSpark: {fileID: 4325388141838674706}
   activeSparkColor: {r: 0.98926055, g: 1, b: 0.6462264, a: 1}
   inactiveSparkColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 0.6392157}
-  spritedefault: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &4325388142156405526
 MonoBehaviour:
   m_ObjectHideFlags: 0
