@@ -288,6 +288,18 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1662804692153562685, guid: 11826a1740c7d4decbee13515932c960, type: 3}
+      propertyPath: realColor.b
+      value: 0.44313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662804692153562685, guid: 11826a1740c7d4decbee13515932c960, type: 3}
+      propertyPath: realColor.g
+      value: 0.65882355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662804692153562685, guid: 11826a1740c7d4decbee13515932c960, type: 3}
+      propertyPath: realColor.r
+      value: 0.42745098
+      objectReference: {fileID: 0}
     - target: {fileID: 1938149211019839033, guid: 11826a1740c7d4decbee13515932c960, type: 3}
       propertyPath: m_Name
       value: Background2
@@ -604,7 +616,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Towards Realworld >
+  m_text: Towards Sanctuary ->
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94d87f7d8a02c4d89bb08996f97a8860, type: 2}
   m_sharedMaterial: {fileID: 4520087488021973238, guid: 94d87f7d8a02c4d89bb08996f97a8860, type: 2}
@@ -11861,15 +11873,13 @@ MonoBehaviour:
   dialogueBlocks:
   - sentences:
     - ... ...
-    - Well what do you know..
-    - Looks like I hit a jackpot with this one..
-    - 'Such limitless potential...
+    - 'This Reality Shifter...
 
-      what a good specimen'
-    - Things are gonna be so much more interesting..
-    - 'The real fun has just started...
-
-      Keh Keh Keh..'
+      has such limitless potential...'
+    - We might actually stand a chance against IT..
+    - Please forgive me...
+    - I am doing this for the sake of the world..
+    - I hope that you will understand why I need to do this..
 --- !u!1 &1343474175
 GameObject:
   m_ObjectHideFlags: 0
@@ -12412,7 +12422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Towards Abyss >
+  m_text: Towards Abyss ->
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 94d87f7d8a02c4d89bb08996f97a8860, type: 2}
   m_sharedMaterial: {fileID: 4520087488021973238, guid: 94d87f7d8a02c4d89bb08996f97a8860, type: 2}
@@ -12874,14 +12884,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - Is that... the exit?
+    - Is that... the entrance to Sanctuary?
     - Finally!
-    - What a weird place..
-    - and how did I even knew how to Reality-Shift?
-    - 'So much unanswered questions..
-
-      but well.. whatever'
-    - I should leave now
+    - I hope that nothing bad happened to the Spirit voice..
+    - Time to start looking for ways to leave this world for good.
+    - Or at least some answers to those questions bothering me..
 --- !u!1 &2052304116
 GameObject:
   m_ObjectHideFlags: 0

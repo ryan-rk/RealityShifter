@@ -251,9 +251,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175371544}
-  - component: {fileID: 175371545}
+  - component: {fileID: 175371546}
   m_Layer: 0
-  m_Name: IntroSceneManager
+  m_Name: InterSceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,7 @@ Transform:
   m_Father: {fileID: 1642837526}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &175371545
+--- !u!114 &175371546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,18 +283,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 175371543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22940293409a84653ae6c2a9f1e0f3ab, type: 3}
+  m_Script: {fileID: 11500000, guid: a32ca44eff5a54adf91ffd45cd467d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoadDelay: 1.8
-  playerFirstDialogueDelay: 2.5
+  playerStopPoint: 0
   dialogueEndDelay: 0.8
-  screenShakeIntensity: 0.1
-  screenShakeDuration: 0.2
-  screenShakeFrequency: 50
   playerDialogueUI: {fileID: 343180734}
   narratorDialogueUI: {fileID: 1200444647}
-  playerDialogueShaker: {fileID: 343180735}
+  isLastInterScene: 1
+  secondGoal: {fileID: 2116900830}
+  secondGoalPosition: {x: -4.7, y: -5.77}
+  screenShakeIntensity: 5
+  screenShakeDuration: 1
 --- !u!1 &206312346
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,18 +482,18 @@ PrefabInstance:
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 175371545}
+      objectReference: {fileID: 175371546}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SkipIntroScene
+      value: SkipInterScene
       objectReference: {fileID: 0}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: IntroScene, Assembly-CSharp
+      value: InterScene, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -5789,7 +5789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 59062165473985472, guid: 478c3d68b3de64339adfa99a147f36bf, type: 3}
       propertyPath: playerSpawnPoint.x
-      value: -4.15
+      value: -15.54
       objectReference: {fileID: 0}
     - target: {fileID: 59062165473985472, guid: 478c3d68b3de64339adfa99a147f36bf, type: 3}
       propertyPath: playerSpawnPoint.y
@@ -5977,15 +5977,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6910803018452035417, guid: 11826a1740c7d4decbee13515932c960, type: 3}
       propertyPath: m_Color.b
-      value: 0.5566038
+      value: 0.6627451
       objectReference: {fileID: 0}
     - target: {fileID: 6910803018452035417, guid: 11826a1740c7d4decbee13515932c960, type: 3}
       propertyPath: m_Color.g
-      value: 0.46000886
+      value: 0.6627451
       objectReference: {fileID: 0}
     - target: {fileID: 6910803018452035417, guid: 11826a1740c7d4decbee13515932c960, type: 3}
       propertyPath: m_Color.r
-      value: 0.31243327
+      value: 0.8117647
       objectReference: {fileID: 0}
     - target: {fileID: 7208642015838830888, guid: 11826a1740c7d4decbee13515932c960, type: 3}
       propertyPath: m_Color.b
@@ -6364,29 +6364,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - Keep your voice down...
-    - ..before you start to regret it.
+    - 'Wait..
+
+      My senses tell me that THEY are coming from that direction.'
+    - 'We will have to take another route.
+
+      I will open up a new portal for
+      you.'
+    - It might be more difficult to traverse, but at least it will be safer than
+      direct contacting with THEM.
+    - Here, use this portal instead.
   - sentences:
-    - Who am I... matters not... more importantly,
-    - you are not from around here, aren't you..
-    - 'This is the Reality Dimension,
-
-      where things exist either as Real or
-      UnReal.'
-    - 'You however...
-
-      there is something special about your existence..'
-    - Hmmmm... you are not exactly real.. neither unreal..
-    - Interesting, it looks like you might be a Reality Shifter..
-    - I always thought that Reality Shifter only exists as legend..
+    - They are the Devourer Guardians, offensive agents sent out to 'clean up' the
+      foreign entity.
+    - And by 'clean up' I meant devour, essentially disintegrating any foreign entity
+      come in contact with them.
+    - The more the world aware of the foreign entry, the more Devourer Guardians
+      it sent out.
+    - Which is the reason why it is more difficult to leave this place as the time
+      goes by.
   - sentences:
-    - This is not the time for chatting..
-    - I am sure THEY have already sensed your arrival.
-    - We have to get out of here fast, save the questions for later.
-    - I shall provide you guidance wherever possible.
-    - 'Step into the green portal..
+    - 'Stop complaining,
 
-      it will take you closer to the exit.'
+      save your energy to focus in the next area.'
+    - It will not be as forgiving as the previous areas.
+  - sentences:
+    - Bad timing, it seems like they are catching up..
+    - You go on ahead, I'll help you gain some time. You should be able to reach
+      the Sanctuary after the next area.
+  - sentences:
+    - Just go! No time to waste.
+    - Don't worry, they wouldn't hurt a spirit.
 --- !u!1 &1343474175
 GameObject:
   m_ObjectHideFlags: 0
@@ -7047,6 +7055,7 @@ Transform:
   - {fileID: 2071799714}
   - {fileID: 1872182075}
   - {fileID: 1277185788}
+  - {fileID: 2116900829}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7172,30 +7181,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - ...
-    - Wha... what happened...
-    - Huh... where am I?
-    - 'Everything here seems so real yet...
-
-      so unreal...'
-    - '!! What happened to my body?!!'
+    - Great, another portal, here goes nothing.
   - sentences:
-    - Who is that? Show yourself!
-    - and what is this place?
+    - Hold on, you've mentioned this "THEY" a few times, who or what are THEY?
+    - It sounds like something we should really avoid..
   - sentences:
-    - Wait.. I dont really follow the conversation..
-    - 'What do you meant by Reality Shifter?
-
-      And how did I...'
+    - What?! Why does it hate me so much, it's not like I come here out of free will..
+      Urgh..
   - sentences:
-    - But why should I trust you...
-    - ... ...
-    - That voice left... isn't it...
-    - Well... guess I dont really have a choice
-    - 'There isn''t anything else I can do,
-
-      I have to find out what happened..'
-    - Here goes nothing...
+    - '! ! !'
+    - What just happened?!
+  - sentences:
+    - But...
+  - sentences:
+    - In that case... Thanks, I'll see you later
 --- !u!1 &2052304116
 GameObject:
   m_ObjectHideFlags: 0
@@ -7337,6 +7336,75 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6814672589420975637, guid: 1122071e3a8a84b558cec7826aeb1432, type: 3}
   m_PrefabInstance: {fileID: 2071799713}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2116900828
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 1883003847}
+    m_Modifications:
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -21.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310383739930761273, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+      propertyPath: m_Name
+      value: SecondGoal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+--- !u!4 &2116900829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7310383739930761272, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+  m_PrefabInstance: {fileID: 2116900828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2116900830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7310383739930761273, guid: d9516bfa636944f42b2e0f5753b059bb, type: 3}
+  m_PrefabInstance: {fileID: 2116900828}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &327457597695736391
 PrefabInstance:

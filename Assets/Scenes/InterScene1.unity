@@ -251,9 +251,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175371544}
-  - component: {fileID: 175371545}
+  - component: {fileID: 175371546}
   m_Layer: 0
-  m_Name: IntroSceneManager
+  m_Name: InterSceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,7 +274,7 @@ Transform:
   m_Father: {fileID: 1642837526}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &175371545
+--- !u!114 &175371546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,18 +283,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 175371543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22940293409a84653ae6c2a9f1e0f3ab, type: 3}
+  m_Script: {fileID: 11500000, guid: a32ca44eff5a54adf91ffd45cd467d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneLoadDelay: 1.8
-  playerFirstDialogueDelay: 2.5
+  playerStopPoint: 0
   dialogueEndDelay: 0.8
-  screenShakeIntensity: 0.1
-  screenShakeDuration: 0.2
-  screenShakeFrequency: 50
   playerDialogueUI: {fileID: 343180734}
   narratorDialogueUI: {fileID: 1200444647}
-  playerDialogueShaker: {fileID: 343180735}
 --- !u!1 &206312346
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,18 +477,18 @@ PrefabInstance:
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 175371545}
+      objectReference: {fileID: 175371546}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SkipIntroScene
+      value: SkipInterScene
       objectReference: {fileID: 0}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: IntroScene, Assembly-CSharp
+      value: InterScene, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2913520996009890215, guid: 716903f00392a4996935015ccefc4526, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -5789,7 +5784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 59062165473985472, guid: 478c3d68b3de64339adfa99a147f36bf, type: 3}
       propertyPath: playerSpawnPoint.x
-      value: -4.15
+      value: -15.54
       objectReference: {fileID: 0}
     - target: {fileID: 59062165473985472, guid: 478c3d68b3de64339adfa99a147f36bf, type: 3}
       propertyPath: playerSpawnPoint.y
@@ -6364,29 +6359,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - Keep your voice down...
-    - ..before you start to regret it.
+    - It is the defensive mechanism of this world..
+    - ..by rearranging the world layout to keep out foreign entities.
   - sentences:
-    - Who am I... matters not... more importantly,
-    - you are not from around here, aren't you..
-    - 'This is the Reality Dimension,
-
-      where things exist either as Real or
-      UnReal.'
-    - 'You however...
-
-      there is something special about your existence..'
-    - Hmmmm... you are not exactly real.. neither unreal..
-    - Interesting, it looks like you might be a Reality Shifter..
-    - I always thought that Reality Shifter only exists as legend..
+    - I am a spirit guardian of this world.
+    - As to why you are brought here.. I am afraid I do not have the answer to that..
+    - But I do know that you should leave this place quick.
+    - Your existence here is perilous, the world is rejecting you.
+    - The longer you spend the time here, the harder it will be for you to leave.
   - sentences:
-    - This is not the time for chatting..
-    - I am sure THEY have already sensed your arrival.
-    - We have to get out of here fast, save the questions for later.
-    - I shall provide you guidance wherever possible.
-    - 'Step into the green portal..
-
-      it will take you closer to the exit.'
+    - It seems like the workings of this world is out of your comprehension.
+    - No matter.. I will guide you to the Sanctuary..
+    - There might be spirits there that know more about Reality Shifter to provide
+      aid for you.
+    - I will meet you on the other side, as before, the portal will lead you there.
 --- !u!1 &1343474175
 GameObject:
   m_ObjectHideFlags: 0
@@ -7172,30 +7158,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - ...
-    - Wha... what happened...
-    - Huh... where am I?
-    - 'Everything here seems so real yet...
-
-      so unreal...'
-    - '!! What happened to my body?!!'
+    - Phew, what a weird place..
+    - Reality Shift... how did I even learn to do that?
+    - And why are there so many obstacles along the way..
   - sentences:
-    - Who is that? Show yourself!
-    - and what is this place?
-  - sentences:
-    - Wait.. I dont really follow the conversation..
-    - 'What do you meant by Reality Shifter?
+    - 'You are the one from before..
 
-      And how did I...'
+      what exactly are you?'
+    - And how did I end up here? Are you the one who brought me here?
   - sentences:
-    - But why should I trust you...
-    - ... ...
-    - That voice left... isn't it...
-    - Well... guess I dont really have a choice
-    - 'There isn''t anything else I can do,
-
-      I have to find out what happened..'
-    - Here goes nothing...
+    - So you are saying that this world is alive?! It sounds so absurd..
+    - But as much as I want to leave this place, I have no idea on how to do that..
+  - sentences:
+    - Wait, I wanted to ask you before, why do you help me?
+    - ... it left again..
+    - Well, the only option now is to check out this Sanctuary place.
+    - Hopefully I can find out more on how I ended up here or the way to leave.
 --- !u!1 &2052304116
 GameObject:
   m_ObjectHideFlags: 0
