@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LoadScreen : MonoBehaviour
 {
-	// Start is called before the first frame update
-	void Start()
-	{
+	[SerializeField] float loadScreenDuration = 3f;
 
+	private void Start()
+	{
+		StartCoroutine(LoadScreenProcess());
 	}
 
-	// Update is called once per frame
-	void Update()
+	IEnumerator LoadScreenProcess()
 	{
-
+		yield return new WaitForSeconds(loadScreenDuration);
+		SceneManager.LoadScene("StartMenu");
 	}
 
-	public void PlayLoadSound()
-	{
-
-	}
 }

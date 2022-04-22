@@ -53,20 +53,20 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	// Start is called before the first frame update
-	void Start()
-	{
-	}
+	// // Start is called before the first frame update
+	// void Start()
+	// {
+	// }
 
-	// Update is called once per frame
-	void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.J))
-		{
-			Sound targetSound = Array.Find<Sound>(sounds, sound => sound.soundName == "StartMenu");
-			Debug.Log(targetSound.source.isPlaying);
-		}
-	}
+	// // Update is called once per frame
+	// void Update()
+	// {
+	// 	if (Input.GetKeyDown(KeyCode.J))
+	// 	{
+	// 		Sound targetSound = Array.Find<Sound>(sounds, sound => sound.soundName == "StartMenu");
+	// 		Debug.Log(targetSound.source.isPlaying);
+	// 	}
+	// }
 
 	public void PlaySound(string name, float startVolume)
 	{

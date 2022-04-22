@@ -17,6 +17,8 @@ public class LevelLoader : MonoBehaviour
 	public Vector2 playerSpawnPoint;
 	[SerializeField] bool isDrawSpawnPoint;
 
+	List<String> worldEndLevelNames = new List<string> { "Level_1_5", "Level_2_5", "Level_3_5", "Level_4_5" };
+
 	public event Action<Player> OnPlayerSpawned;
 
 	private void Awake()
@@ -71,8 +73,10 @@ public class LevelLoader : MonoBehaviour
 		else
 		{
 			GameManager.isLevelFirstEntered = true;
-			if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 3))
+			// if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 3))
+			if (worldEndLevelNames.Contains(SceneManager.GetActiveScene().name))
 			{
+				Debug.Log("Next scene is not a level");
 				if (AudioManager.Instance != null)
 				{
 					AudioManager.Instance.StopSound("LevelBGM", true);

@@ -1152,14 +1152,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_text
-      value: 'Some objects exist in <sprite index=12>  dimension, while some in <sprite
-        index=13> . These objects are called <color="green">Reality Objects</color>.
+      value: 'Some objects are <sprite index=12>  , while some are <sprite index=13>.
+        These objects with reality state are called <color="blue">Reality Objects</color>.
 
 
 
-        Only
-        <color="blue">Reality Objects</color> in <sprite index=12>  dimension can
-        interact with <sprite index=15>'
+        Not
+        all objects are <color="blue">Reality Objects</color>, they can be easily
+        distinguished. For <color="blue">Reality Objects</color>, only those that
+        are   <sprite index=12>   can interact with <sprite index=15>'
       objectReference: {fileID: 0}
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_spriteAsset
@@ -1183,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040591469407824384, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 8.5
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 2040591469622241976, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_Name
@@ -1235,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040591469654201133, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 8.5
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 2040591470348271545, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_IsActive

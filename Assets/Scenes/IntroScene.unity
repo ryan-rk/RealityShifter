@@ -6364,28 +6364,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - You are in the World of Duality.
-    - 'Where things exist in two dimensions...
-
-      real or not-real.'
+    - Keep your voice down...
+    - ..before you start to regret it.
   - sentences:
-    - Who am I... matters not...
-    - 'More importantly, you do not belong here..
+    - Who am I... matters not... more importantly,
+    - you are not from around here, aren't you..
+    - 'This is the Reality Dimension,
 
-      You have to find your way
-      out fast'
-    - This is not a place to stay for the likes of you
+      where things exist either as Real or
+      UnReal.'
+    - 'You however...
+
+      there is something special about your existence..'
     - Hmmmm...
-    - It looks like you possess the ability to Reality-Shift..
-    - It should come in handy during the escape
+    - Interesting, it looks like you might be a Reality Shifter..
+    - Such a long time since the last Reality Shifter came about.
   - sentences:
-    - 'Save the questions
-
-      you should really be on the way'
+    - This is not the time for chatting..
+    - I am sure THEY have already sensed your arrival.
+    - We have to get out of here fast, save the questions for later.
+    - I shall provide you guidance wherever possible.
     - 'Step into the green portal..
 
       it will take you closer to the exit.'
-    - I shall aid you wherever possible.
 --- !u!1 &1343474175
 GameObject:
   m_ObjectHideFlags: 0
@@ -7171,27 +7172,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - Huh, where am I...
-    - Am I in my dream?
+    - ...
+    - Wha... what happened...
+    - Huh... where am I?
     - 'Everything here seems so real yet...
 
-      feels as if they are... not real...'
-    - What happened to my body?!!
+      so unreal...'
+    - '!! What happened to my body?!!'
   - sentences:
     - Who is that? Show yourself!
+    - and what is this place?
   - sentences:
-    - 'Wait.. I dont really understand
+    - Wait.. I dont really follow the conversation..
+    - 'What do you meant by Reality Shifter?
 
-      what are you talking about...'
-    - What do you meant by...
+      And how did I...'
   - sentences:
     - But why should I trust you...
     - ... ...
     - That voice left... isn't it...
-    - Well... guess I dont have a choice
-    - 'Even if this is a dream
+    - Well... guess I dont really have a choice
+    - 'There isn''t anything else I can do,
 
-      I still have to find out what happened'
+      I have to find out what happened..'
     - Here goes nothing...
 --- !u!1 &2052304116
 GameObject:

@@ -76,7 +76,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
   - soundName: Click
-    clip: {fileID: 8300000, guid: b11b5ad95b7a14949a116b8c36ed0a7f, type: 3}
+    clip: {fileID: 8300000, guid: 014a0cf1b186a483ca5554b63af4fbc4, type: 3}
     isSoundEffect: 1
     loop: 0
     volume: 1

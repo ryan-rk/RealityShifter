@@ -5491,13 +5491,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_text
-      value: '<sprite index=15> stepping on <color="blue">Reality Objects</color>
-        prevent them from switching dimension. The stepped on object is highlighted.
+      value: '<sprite index=14>  when <sprite index=15> stepping on <color="blue">Reality
+        Object</color> prevent it from switching state. The stepped on object is
+        highlighted.
 
 
 
-        <sprite
-        index=14>  can be performed infinitely on ground, but only once when in air.'
+        <sprite index=14>  can be performed infinitely on
+        ground, but only once when in air.'
       objectReference: {fileID: 0}
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_fontSize

@@ -24,9 +24,9 @@ public class PauseMenu : MonoBehaviour
 
 	void SetLevelTitleText()
 	{
-		int levelNumber = SceneManager.GetActiveScene().buildIndex - 2;
-		string levelTitleString = "Level " + levelNumber;
-		levelTitle.text = levelTitleString;
+		string levelName = SceneManager.GetActiveScene().name;
+		string[] splitLevelName = levelName.Split('_');
+		levelTitle.text = splitLevelName[0] + " " + splitLevelName[1] + "-" + splitLevelName[2];
 	}
 
 	// Update is called once per frame

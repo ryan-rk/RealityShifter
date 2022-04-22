@@ -105,7 +105,7 @@ public class IntroScene : MonoBehaviour
 		{
 			currentDialogueSequence += 1;
 			DialogueManager.Instance.PrepareNextSentence();
-			if (currentDialogueSequence == 3)
+			if (currentDialogueSequence == 4)
 			{
 				playerDialogueShaker.UIShake(screenShakeIntensity, screenShakeDuration, screenShakeFrequency);
 			}

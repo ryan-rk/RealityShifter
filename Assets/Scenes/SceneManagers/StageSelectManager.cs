@@ -33,17 +33,17 @@ public class StageSelectManager : MonoBehaviour
 		}
 	}
 
-	public void LoadStage(int stageNum)
+	public void LoadStage(string levelName)
 	{
-		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(stageNum + 2));
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(levelName));
 		if (AudioManager.Instance != null)
 		{
 			AudioManager.Instance.PlaySound("Start");
 			AudioManager.Instance.StopSound("StartMenu", true);
-			if (stageNum >= 1 && stageNum <= 12)
-			{
-				AudioManager.Instance.PlaySound("LevelBGM", 0);
-			}
+			// if (stageNum >= 1 && stageNum <= 12)
+			// {
+			// 	AudioManager.Instance.PlaySound("LevelBGM", 0);
+			// }
 		}
 	}
 
