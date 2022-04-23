@@ -43,10 +43,10 @@ public class JumpController : MonoBehaviour
 		rb.velocity = new Vector2(rb.velocity.x, 0);
 		rb.AddForce(direction.normalized * jumpForce, ForceMode2D.Impulse);
 		// rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-		// if (AudioManager.Instance != null)
-		// {
-		// 	AudioManager.Instance.PlaySound("Jump");
-		// }
+		if (AudioManager.Instance != null)
+		{
+			AudioManager.Instance.PlaySound("Jump");
+		}
 	}
 
 	public void Jump()

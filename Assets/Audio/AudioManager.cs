@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance;
 	public Sound[] sounds;
+	[SerializeField] AudioMixerGroup mainMixerGroup;
 	[SerializeField] GameObject soundEffectContainer;
 	[SerializeField] GameObject bgmContainer;
 	[SerializeField] float fadeInSpeed = 1f;
@@ -50,6 +51,7 @@ public class AudioManager : MonoBehaviour
 			sound.source.pitch = sound.pitch;
 			sound.source.loop = sound.loop;
 			sound.source.playOnAwake = false;
+			sound.source.outputAudioMixerGroup = mainMixerGroup;
 		}
 	}
 

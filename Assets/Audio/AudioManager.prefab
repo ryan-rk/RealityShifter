@@ -61,6 +61,34 @@ MonoBehaviour:
     volume: 0.4
     pitch: 1
     source: {fileID: 0}
+  - soundName: World1
+    clip: {fileID: 8300000, guid: d7aaf5f963303465eb8be6034a99f5bf, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 0.25
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: World2
+    clip: {fileID: 8300000, guid: fff49ee5593164389a1e4faeaf5df9c2, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: World3
+    clip: {fileID: 8300000, guid: 1905dddd13b8a4bf29c1cb79f47027df, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+  - soundName: World4
+    clip: {fileID: 8300000, guid: 5051f2a3d6c57446da85eedfb49a37a4, type: 3}
+    isSoundEffect: 0
+    loop: 1
+    volume: 0.35
+    pitch: 1
+    source: {fileID: 0}
   - soundName: Intro
     clip: {fileID: 8300000, guid: ae4ee47d7844a4d7fa03a67c2fea15c0, type: 3}
     isSoundEffect: 0
@@ -166,6 +194,7 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
+  mainMixerGroup: {fileID: 24300002, guid: 0d75c3ab2fdf44c33b1bd2b10366a7b3, type: 2}
   soundEffectContainer: {fileID: 2739325957898824883}
   bgmContainer: {fileID: 2739325957752286592}
   fadeInSpeed: 0.8

@@ -7,6 +7,8 @@ public class StartMenu : MonoBehaviour
 {
 	float transitionInDelay = 0.4f;
 	float transitionOutDelay = 0.1f;
+	// [SerializeField] Animator optionsAC;
+	// bool isOptionsOn = false;
 
 	private void Start()
 	{
@@ -17,6 +19,16 @@ public class StartMenu : MonoBehaviour
 			AudioManager.Instance.PlaySound("StartMenu", 0);
 		}
 	}
+
+	// public void ToggleOptions()
+	// {
+	// 	optionsAC.Play(isOptionsOn ? "SlideOut" : "SlideIn");
+	// 	isOptionsOn = !isOptionsOn;
+	// 	if (AudioManager.Instance != null)
+	// 	{
+	// 		AudioManager.Instance.PlaySound("Click");
+	// 	}
+	// }
 
 	public void QuitGame()
 	{

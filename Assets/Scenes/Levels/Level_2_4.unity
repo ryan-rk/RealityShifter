@@ -3835,6 +3835,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2468055591216614845, guid: dab1e9c509c5a429ba68927ec6036f77, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468055591216614845, guid: dab1e9c509c5a429ba68927ec6036f77, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468055591293567646, guid: dab1e9c509c5a429ba68927ec6036f77, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468055591293567646, guid: dab1e9c509c5a429ba68927ec6036f77, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2468055591293567646, guid: dab1e9c509c5a429ba68927ec6036f77, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4491872492700830970, guid: dab1e9c509c5a429ba68927ec6036f77, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3982,7 +4002,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_text
-      value: Spikes <sprite index=18> are deadly, but they too, can be shifted.
+      value: Spikes are deadly, but they too, can be shifted.
       objectReference: {fileID: 0}
     - target: {fileID: 2040591468774829910, guid: b270e88eb8cb44202b9d7533163b7470, type: 3}
       propertyPath: m_fontSize

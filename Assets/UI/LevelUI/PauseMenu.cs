@@ -12,6 +12,8 @@ public class PauseMenu : MonoBehaviour
 	[SerializeField] TMP_Text levelTitle;
 	Animator pauseMenuUIAnimator;
 	[SerializeField] float gameResumeDelay = 0.5f;
+	// [SerializeField] Animator optionsAC;
+	// bool isOptionsOn = false;
 	[SerializeField] float restartDelay = 0.5f;
 	[SerializeField] float returnToMainMenuDelay = 0f;
 
@@ -65,6 +67,16 @@ public class PauseMenu : MonoBehaviour
 		Time.timeScale = 1f;
 	}
 
+	// public void ToggleOptions()
+	// {
+	// 	optionsAC.Play(isOptionsOn ? "SlideOut" : "SlideIn");
+	// 	isOptionsOn = !isOptionsOn;
+	// 	if (AudioManager.Instance != null)
+	// 	{
+	// 		AudioManager.Instance.PlaySound("Click");
+	// 	}
+	// }
+
 	public void RestartLevel()
 	{
 		pauseMenuUIAnimator.Play("Close");
@@ -91,11 +103,14 @@ public class PauseMenu : MonoBehaviour
 	{
 		Debug.Log("Returning to main menu");
 		Time.timeScale = 1f;
-		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(0));
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(1));
 		if (AudioManager.Instance != null)
 		{
 			AudioManager.Instance.PlaySound("Click");
-			AudioManager.Instance.StopSound("LevelBGM", true);
+			string[] sceneName = SceneManager.GetActiveScene().name.Split('_');
+			string worldNum = sceneName[1];
+			AudioManager.Instance.StopSound("World" + worldNum, true);
+			// AudioManager.Instance.StopSound("LevelBGM", true);
 		}
 	}
 
@@ -103,11 +118,14 @@ public class PauseMenu : MonoBehaviour
 	{
 		Debug.Log("Returning to stage select");
 		Time.timeScale = 1f;
-		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(1));
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(returnToMainMenuDelay, () => SceneManager.LoadScene(2));
 		if (AudioManager.Instance != null)
 		{
 			AudioManager.Instance.PlaySound("Click");
-			AudioManager.Instance.StopSound("LevelBGM", true);
+			string[] sceneName = SceneManager.GetActiveScene().name.Split('_');
+			string worldNum = sceneName[1];
+			AudioManager.Instance.StopSound("World" + worldNum, true);
+			// AudioManager.Instance.StopSound("LevelBGM", true);
 		}
 	}
 }

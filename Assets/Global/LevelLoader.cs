@@ -79,7 +79,10 @@ public class LevelLoader : MonoBehaviour
 				Debug.Log("Next scene is not a level");
 				if (AudioManager.Instance != null)
 				{
-					AudioManager.Instance.StopSound("LevelBGM", true);
+					string[] sceneName = SceneManager.GetActiveScene().name.Split('_');
+					string worldNum = sceneName[1];
+					AudioManager.Instance.StopSound("World" + worldNum, true);
+					// AudioManager.Instance.StopSound("LevelBGM", true);
 				}
 			}
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
