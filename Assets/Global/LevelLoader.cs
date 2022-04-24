@@ -17,7 +17,7 @@ public class LevelLoader : MonoBehaviour
 	public Vector2 playerSpawnPoint;
 	[SerializeField] bool isDrawSpawnPoint;
 
-	List<String> worldEndLevelNames = new List<string> { "Level_1_5", "Level_2_5", "Level_3_5", "Level_4_5" };
+	List<String> worldEndLevelNames = new List<string> { "Level_1_5", "Level_2_5", "Level_3_5", "Level_4_5", "Level_4_6" };
 
 	public event Action<Player> OnPlayerSpawned;
 
@@ -66,38 +66,42 @@ public class LevelLoader : MonoBehaviour
 
 	void NextLevelChecker()
 	{
-		if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 1))
+		// if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 1))
+		// {
+		// 	Debug.Log("Game Completed");
+		// }
+		// else
+		// {
+		GameManager.isLevelFirstEntered = true;
+		// if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 3))
+		if (worldEndLevelNames.Contains(SceneManager.GetActiveScene().name))
 		{
-			Debug.Log("Game Completed");
+			Debug.Log("Next scene is not a level");
+			if (AudioManager.Instance != null)
+			{
+				string[] sceneName = SceneManager.GetActiveScene().name.Split('_');
+				string worldNum = sceneName[1];
+				AudioManager.Instance.StopSound("World" + worldNum, true);
+				// AudioManager.Instance.StopSound("LevelBGM", true);
+			}
+		}
+		if (SceneManager.GetActiveScene().name == "Level_4_5")
+		{
+			SceneManager.LoadScene("OutroScene");
+		}
+		else if (SceneManager.GetActiveScene().name == "Level_4_6")
+		{
+			SceneManager.LoadScene("OutroSecret");
+		}
+		else if (SceneManager.GetActiveScene().name == "OutroSecret")
+		{
+			SceneManager.LoadScene("EndGameMenu");
 		}
 		else
 		{
-			GameManager.isLevelFirstEntered = true;
-			// if (SceneManager.GetActiveScene().buildIndex == (SceneManager.sceneCountInBuildSettings - 3))
-			if (worldEndLevelNames.Contains(SceneManager.GetActiveScene().name))
-			{
-				Debug.Log("Next scene is not a level");
-				if (AudioManager.Instance != null)
-				{
-					string[] sceneName = SceneManager.GetActiveScene().name.Split('_');
-					string worldNum = sceneName[1];
-					AudioManager.Instance.StopSound("World" + worldNum, true);
-					// AudioManager.Instance.StopSound("LevelBGM", true);
-				}
-			}
-			if (SceneManager.GetActiveScene().name == "Level_4_5")
-			{
-				SceneManager.LoadScene("OutroScene");
-			}
-			else if (SceneManager.GetActiveScene().name == "Level_4_6")
-			{
-				SceneManager.LoadScene("OutroSecret");
-			}
-			else
-			{
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-			}
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 		}
+		// }
 	}
 
 	private void OnDrawGizmos()

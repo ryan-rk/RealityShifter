@@ -11,7 +11,7 @@ public class SecretScene : MonoBehaviour
 	[SerializeField] PlayerDialogueUI playerDialogueUI;
 	[SerializeField] NarratorDialogueUI narratorDialogueUI;
 	[SerializeField] Exit exit;
-	[SerializeField] float sceneTransitionOutDelay = 2f;
+	[SerializeField] float sceneTransitionOutDelay = 3f;
 
 	bool canDialogueProceed = false;
 	int currentDialogueSequence = 0;

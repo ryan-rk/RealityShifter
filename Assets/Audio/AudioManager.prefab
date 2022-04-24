@@ -200,6 +200,13 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
+  - soundName: Success
+    clip: {fileID: 8300000, guid: b83ec9ed8de09465fa75449f500a5208, type: 3}
+    isSoundEffect: 1
+    loop: 0
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &2739325957752286592
 GameObject:
   m_ObjectHideFlags: 0

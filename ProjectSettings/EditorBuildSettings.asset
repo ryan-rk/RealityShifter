@@ -93,9 +93,9 @@ EditorBuildSettings:
     path: Assets/Scenes/OutroScene.unity
     guid: 5efd1240d4fb946d1b9da08e9032d86e
   - enabled: 1
+    path: Assets/Scenes/EndGameMenu.unity
+    guid: 35c5beeeb2a3c4e71b08068f4781c62b
+  - enabled: 1
     path: Assets/Scenes/OutroSecret.unity
     guid: 75be66f68f7d647da888cd0230466d3b
-  - enabled: 1
-    path: Assets/Scenes/GameEndMenu.unity
-    guid: 35c5beeeb2a3c4e71b08068f4781c62b
   m_configObjects: {}
