@@ -46,6 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c85b2b853b7cb4359a2cdb1ad0b55701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmMixerGroup: {fileID: 2418232045678117848, guid: 0d75c3ab2fdf44c33b1bd2b10366a7b3, type: 2}
+  seMixerGroup: {fileID: 4042863716074737026, guid: 0d75c3ab2fdf44c33b1bd2b10366a7b3, type: 2}
+  soundEffectContainer: {fileID: 2739325957898824883}
+  bgmContainer: {fileID: 2739325957752286592}
+  fadeInSpeed: 0.8
+  fadeOutSpeed: 1
   sounds:
   - soundName: StartMenu
     clip: {fileID: 8300000, guid: 53355ba44b64b44e58f92b035157ac36, type: 3}
@@ -194,11 +200,6 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
-  mainMixerGroup: {fileID: 24300002, guid: 0d75c3ab2fdf44c33b1bd2b10366a7b3, type: 2}
-  soundEffectContainer: {fileID: 2739325957898824883}
-  bgmContainer: {fileID: 2739325957752286592}
-  fadeInSpeed: 0.8
-  fadeOutSpeed: 1
 --- !u!1 &2739325957752286592
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,15 +9,18 @@ public class OptionsMenu : MonoBehaviour
 	[SerializeField] Animator optionsAC;
 	bool isOptionsOn = false;
 
-	[SerializeField] Slider volumeSlider;
+	[SerializeField] Slider bgmVolumeSlider;
+	[SerializeField] Slider seVolumeSlider;
 	[SerializeField] AudioMixer mainMixer;
 	[SerializeField] float minVolume = -30;
 	[SerializeField] float maxVolume = 0;
 
 	private void Start()
 	{
-		volumeSlider.minValue = minVolume;
-		volumeSlider.maxValue = maxVolume;
+		bgmVolumeSlider.minValue = minVolume;
+		bgmVolumeSlider.maxValue = maxVolume;
+		seVolumeSlider.minValue = minVolume;
+		seVolumeSlider.maxValue = maxVolume;
 		ResetSliderValue();
 	}
 
@@ -31,16 +34,24 @@ public class OptionsMenu : MonoBehaviour
 		}
 	}
 
-	public void SetVolume(float volume)
+	public void SetBGMVolume(float volume)
 	{
-		mainMixer.SetFloat("masterVolume", volume);
+		mainMixer.SetFloat("bgmVolume", volume);
+	}
+
+	public void SetSEVolume(float volume)
+	{
+		mainMixer.SetFloat("seVolume", volume);
 	}
 
 	void ResetSliderValue()
 	{
-		float currentMasterVolume;
-		mainMixer.GetFloat("masterVolume", out currentMasterVolume);
-		volumeSlider.value = currentMasterVolume;
+		float currentBgmVolume;
+		mainMixer.GetFloat("bgmVolume", out currentBgmVolume);
+		bgmVolumeSlider.value = currentBgmVolume;
+		float currentSeVolume;
+		mainMixer.GetFloat("seVolume", out currentSeVolume);
+		seVolumeSlider.value = currentSeVolume;
 	}
 
 	public void SetFullscreen(bool isFullscreen)

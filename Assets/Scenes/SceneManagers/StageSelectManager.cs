@@ -26,7 +26,7 @@ public class StageSelectManager : MonoBehaviour
 
 	public void BackToMainMenu()
 	{
-		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(0));
+		SceneTransition.Instance.TransitionOutOfSceneAtMouse(transitionOutDelay, () => SceneManager.LoadScene(1));
 		if (AudioManager.Instance != null)
 		{
 			AudioManager.Instance.PlaySound("Click");

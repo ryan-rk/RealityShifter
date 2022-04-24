@@ -7,12 +7,14 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
 	public static AudioManager Instance;
-	public Sound[] sounds;
-	[SerializeField] AudioMixerGroup mainMixerGroup;
+	[SerializeField] AudioMixerGroup bgmMixerGroup;
+	[SerializeField] AudioMixerGroup seMixerGroup;
 	[SerializeField] GameObject soundEffectContainer;
 	[SerializeField] GameObject bgmContainer;
 	[SerializeField] float fadeInSpeed = 1f;
 	[SerializeField] float fadeOutSpeed = 1f;
+	public Sound[] sounds;
+	// [SerializeField] AudioMixerGroup mainMixerGroup;
 
 	private void Awake()
 	{
@@ -41,17 +43,18 @@ public class AudioManager : MonoBehaviour
 			if (sound.isSoundEffect)
 			{
 				sound.source = soundEffectContainer.AddComponent<AudioSource>();
+				sound.source.outputAudioMixerGroup = seMixerGroup;
 			}
 			else
 			{
 				sound.source = bgmContainer.AddComponent<AudioSource>();
+				sound.source.outputAudioMixerGroup = bgmMixerGroup;
 			}
 			sound.source.clip = sound.clip;
 			sound.source.volume = sound.volume;
 			sound.source.pitch = sound.pitch;
 			sound.source.loop = sound.loop;
 			sound.source.playOnAwake = false;
-			sound.source.outputAudioMixerGroup = mainMixerGroup;
 		}
 	}
 

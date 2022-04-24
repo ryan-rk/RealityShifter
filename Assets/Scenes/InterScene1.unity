@@ -290,6 +290,11 @@ MonoBehaviour:
   dialogueEndDelay: 0.8
   playerDialogueUI: {fileID: 343180734}
   narratorDialogueUI: {fileID: 1200444647}
+  isLastInterScene: 0
+  secondGoal: {fileID: 0}
+  secondGoalPosition: {x: 0, y: 0}
+  screenShakeIntensity: 0
+  screenShakeDuration: 0
 --- !u!1 &206312346
 GameObject:
   m_ObjectHideFlags: 0
@@ -6359,17 +6364,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBlocks:
   - sentences:
-    - It is the defensive mechanism of this world..
+    - It's the defensive mechanism of this world..
     - ..by rearranging the world layout to keep out foreign entities.
   - sentences:
-    - I am a spirit guardian of this world.
-    - As to why you are brought here.. I am afraid I do not have the answer to that..
-    - But I do know that you should leave this place quick.
-    - Your existence here is perilous, the world is rejecting you.
+    - I am a Guardian Spirit, one of the inhabitants in this world.
+    - My task is to guide beings that are accidentally entering this world, so that
+      they could find their way back.
+    - This world doesn't really welcome foreign visitors..
+    - As to how and why you are brought here.. I am afraid I do not have the answer
+      to that..
+    - But I do know that you should leave this place as soon as possible, the world
+      is rejecting your existence.
     - The longer you spend the time here, the harder it will be for you to leave.
   - sentences:
-    - It seems like the workings of this world is out of your comprehension.
-    - No matter.. I will guide you to the Sanctuary..
+    - The inner workings of this world is beyond your comprehension.
+    - No matter.. I shall guide you to the Sanctuary..
     - There might be spirits there that know more about Reality Shifter to provide
       aid for you.
     - I will meet you on the other side, as before, the portal will lead you there.
@@ -7170,10 +7179,11 @@ MonoBehaviour:
     - So you are saying that this world is alive?! It sounds so absurd..
     - But as much as I want to leave this place, I have no idea on how to do that..
   - sentences:
-    - Wait, I wanted to ask you before, why do you help me?
+    - Wait, I still have some questions for you...
+    - ... ...
     - ... it left again..
     - Well, the only option now is to check out this Sanctuary place.
-    - Hopefully I can find out more on how I ended up here or the way to leave.
+    - Hopefully I can get my answers there.
 --- !u!1 &2052304116
 GameObject:
   m_ObjectHideFlags: 0

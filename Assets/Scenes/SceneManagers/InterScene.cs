@@ -103,6 +103,10 @@ public class InterScene : MonoBehaviour
 					if (secondGoal != null)
 					{
 						secondGoal.transform.position = secondGoalPosition;
+						if (AudioManager.Instance != null)
+						{
+							AudioManager.Instance.PlaySound("Spawned");
+						}
 					}
 				}
 				else if (currentDialogueSequence == 14)

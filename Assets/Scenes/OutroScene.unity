@@ -11873,13 +11873,13 @@ MonoBehaviour:
   dialogueBlocks:
   - sentences:
     - ... ...
-    - 'This Reality Shifter...
+    - This Reality Shifter... such limitless potential...
+    - With this power, we might actually stand a chance against IT..
+    - 'Please forgive me...
 
-      has such limitless potential...'
-    - We might actually stand a chance against IT..
-    - Please forgive me...
-    - I am doing this for the sake of the world..
-    - I hope that you will understand why I need to do this..
+      I am doing this for the sake of the world..'
+    - For the time being, I can't let you return yet..
+    - ...
 --- !u!1 &1343474175
 GameObject:
   m_ObjectHideFlags: 0
@@ -12886,9 +12886,8 @@ MonoBehaviour:
   - sentences:
     - Is that... the entrance to Sanctuary?
     - Finally!
-    - I hope that nothing bad happened to the Spirit voice..
+    - I hope that nothing bad happened to that Spirit earlier..
     - Time to start looking for ways to leave this world for good.
-    - Or at least some answers to those questions bothering me..
 --- !u!1 &2052304116
 GameObject:
   m_ObjectHideFlags: 0

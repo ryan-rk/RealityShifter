@@ -6366,35 +6366,37 @@ MonoBehaviour:
   - sentences:
     - 'Wait..
 
-      My senses tell me that THEY are coming from that direction.'
+      I am sensing that THEY are coming from that direction.'
     - 'We will have to take another route.
 
       I will open up a new portal for
       you.'
     - It might be more difficult to traverse, but at least it will be safer than
-      direct contacting with THEM.
+      having direct contact with THEM.
     - Here, use this portal instead.
   - sentences:
-    - They are the Devourer Guardians, offensive agents sent out to 'clean up' the
-      foreign entity.
+    - They are the Devourer Spirit, inhabitant of this world like us.
+    - But unlike Guardian Spirit, they are offensive agents sent out to 'clean up'
+      the foreign entity.
     - And by 'clean up' I meant devour, essentially disintegrating any foreign entity
-      come in contact with them.
-    - The more the world aware of the foreign entry, the more Devourer Guardians
-      it sent out.
+      coming in contact with them.
+    - The more this world aware of the foreign entry, the more Devourer Spirits it
+      will send out.
     - Which is the reason why it is more difficult to leave this place as the time
       goes by.
   - sentences:
     - 'Stop complaining,
 
-      save your energy to focus in the next area.'
-    - It will not be as forgiving as the previous areas.
+      save your energy and focus on the next area.'
+    - It will not be as forgiving as the previous areas, so stay sharp.
   - sentences:
     - Bad timing, it seems like they are catching up..
     - You go on ahead, I'll help you gain some time. You should be able to reach
       the Sanctuary after the next area.
   - sentences:
-    - Just go! No time to waste.
-    - Don't worry, they wouldn't hurt a spirit.
+    - Don't worry, they wouldn't simply target a spirit without reasons.
+    - But I can delay them from catching up.
+    - Now get moving! There is no time to waste.
 --- !u!1 &1343474175
 GameObject:
   m_ObjectHideFlags: 0
@@ -7184,15 +7186,16 @@ MonoBehaviour:
     - Great, another portal, here goes nothing.
   - sentences:
     - Hold on, you've mentioned this "THEY" a few times, who or what are THEY?
-    - It sounds like something we should really avoid..
+    - It sounds like they are definitely something we should really avoid..
   - sentences:
-    - What?! Why does it hate me so much, it's not like I come here out of free will..
-      Urgh..
+    - It really does sounds like bad news...
+    - Why does this world hates us so much, it's not like I came here out of free
+      will.. urgh..
   - sentences:
     - '! ! !'
     - What just happened?!
   - sentences:
-    - But...
+    - But... howabout you?
   - sentences:
     - In that case... Thanks, I'll see you later
 --- !u!1 &2052304116

@@ -87,8 +87,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level_4_5.unity
     guid: 7891e9bd5b5e24f27b13a2ae2910dfda
   - enabled: 1
+    path: Assets/Scenes/Levels/Level_4_6.unity
+    guid: ca7230344373f4bd0851e7831b307a7e
+  - enabled: 1
     path: Assets/Scenes/OutroScene.unity
     guid: 5efd1240d4fb946d1b9da08e9032d86e
+  - enabled: 1
+    path: Assets/Scenes/OutroSecret.unity
+    guid: 75be66f68f7d647da888cd0230466d3b
   - enabled: 1
     path: Assets/Scenes/GameEndMenu.unity
     guid: 35c5beeeb2a3c4e71b08068f4781c62b

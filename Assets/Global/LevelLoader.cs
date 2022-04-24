@@ -85,7 +85,18 @@ public class LevelLoader : MonoBehaviour
 					// AudioManager.Instance.StopSound("LevelBGM", true);
 				}
 			}
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+			if (SceneManager.GetActiveScene().name == "Level_4_5")
+			{
+				SceneManager.LoadScene("OutroScene");
+			}
+			else if (SceneManager.GetActiveScene().name == "Level_4_6")
+			{
+				SceneManager.LoadScene("OutroSecret");
+			}
+			else
+			{
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+			}
 		}
 	}
 

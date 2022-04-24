@@ -15072,15 +15072,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7599565753546303315}
   normalizedMovement: 0
-  moveSpeed: 8
+  moveSpeed: 7
   spriteAC: {fileID: 7599565753642391090}
   flipContainer: {fileID: 6657074960274588378}
   movementParticle: {fileID: 5843662109582413681}
   speedControllability: 1
-  acceleration: 12
-  deceleration: 15
-  velocityChangePower: 0.95
-  movementFriction: 0.2
 --- !u!114 &3097998338720273171
 MonoBehaviour:
   m_ObjectHideFlags: 0
