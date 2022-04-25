@@ -9,6 +9,8 @@ public class OptionsMenu : MonoBehaviour
 	[SerializeField] Animator optionsAC;
 	bool isOptionsOn = false;
 
+	[SerializeField] Toggle fullscreenToggle;
+
 	[SerializeField] Slider bgmVolumeSlider;
 	[SerializeField] Slider seVolumeSlider;
 	[SerializeField] AudioMixer mainMixer;
@@ -21,7 +23,7 @@ public class OptionsMenu : MonoBehaviour
 		bgmVolumeSlider.maxValue = maxVolume;
 		seVolumeSlider.minValue = minVolume;
 		seVolumeSlider.maxValue = maxVolume;
-		ResetSliderValue();
+		ResetOptionsValue();
 	}
 
 	public void ToggleOptions()
@@ -44,8 +46,9 @@ public class OptionsMenu : MonoBehaviour
 		mainMixer.SetFloat("seVolume", volume);
 	}
 
-	void ResetSliderValue()
+	void ResetOptionsValue()
 	{
+		fullscreenToggle.isOn = Screen.fullScreen;
 		float currentBgmVolume;
 		mainMixer.GetFloat("bgmVolume", out currentBgmVolume);
 		bgmVolumeSlider.value = currentBgmVolume;
