@@ -173,6 +173,14 @@ PrefabInstance:
       propertyPath: canvasRectTransform
       value: 
       objectReference: {fileID: 956631753}
+    - target: {fileID: 1238604678000164476, guid: f9c2ed86be4054b9591cea34cc8121f4, type: 3}
+      propertyPath: expandSpeedRelativeToWidth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1238604678000164476, guid: f9c2ed86be4054b9591cea34cc8121f4, type: 3}
+      propertyPath: shrinkSpeedRelativeToWidth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6488752503643124131, guid: f9c2ed86be4054b9591cea34cc8121f4, type: 3}
       propertyPath: m_Name
       value: CircularTransition

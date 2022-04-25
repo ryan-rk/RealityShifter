@@ -184,5 +184,5 @@ MonoBehaviour:
   canvasRectTransform: {fileID: 0}
   transitionOverlay: {fileID: 6488752501906684095}
   mask: {fileID: 6488752503643124141}
-  shrinkSpeedRelativeToWidth: 5
-  expandSpeedRelativeToWidth: 5
+  shrinkSpeedRelativeToWidth: 10
+  expandSpeedRelativeToWidth: 10

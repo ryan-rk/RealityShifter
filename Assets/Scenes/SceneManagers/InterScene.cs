@@ -109,7 +109,7 @@ public class InterScene : MonoBehaviour
 						}
 					}
 				}
-				else if (currentDialogueSequence == 14)
+				else if (currentDialogueSequence == 16)
 				{
 					if (CameraManager.Instance != null)
 					{
