@@ -1479,7 +1479,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 450}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1718776800804633632
 Animator:
@@ -1514,6 +1514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsAC: {fileID: 1718776800804633632}
+  fullscreenToggle: {fileID: 1718776800558720089}
   bgmVolumeSlider: {fileID: 1718776800312608139}
   seVolumeSlider: {fileID: 8102745591351655666}
   mainMixer: {fileID: 24100000, guid: 0d75c3ab2fdf44c33b1bd2b10366a7b3, type: 2}
