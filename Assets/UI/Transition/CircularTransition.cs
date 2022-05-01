@@ -65,7 +65,8 @@ public class CircularTransition : MonoBehaviour
 
 	void InstantExpand()
 	{
-		mask.rectTransform.sizeDelta = new Vector2(expandedRadius * Screen.width, expandedRadius * Screen.width);
+		// mask.rectTransform.sizeDelta = new Vector2(expandedRadius * Screen.width, expandedRadius * Screen.width);
+		mask.rectTransform.sizeDelta = new Vector2(expandedRadius * Screen.width, expandedRadius * Screen.width) / canvasRectTransform.localScale.x;
 	}
 
 	IEnumerator SizeChangingProcess(float delay, float targetRadius, float changeSpeed, bool disableOnFinish, Action transitionEndCallback)
